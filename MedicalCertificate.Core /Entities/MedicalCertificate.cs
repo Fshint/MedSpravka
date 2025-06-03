@@ -1,6 +1,6 @@
-using MedicalCertificate.Core.Enums;
+using MedicalCertificate.Domain.Enums;
 
-namespace MedicalCertificate.Core.Entities;
+namespace MedicalCertificate.Domain.Entities;
 
 
 public class MedicalCertificate

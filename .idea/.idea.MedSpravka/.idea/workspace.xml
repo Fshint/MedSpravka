@@ -9,7 +9,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="Clean Architect" />
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="удалил Class1.cs">
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/MedicalCertificate.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/MedicalCertificate.Application.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Enums/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Enums/CertificateStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /MedicalCertificate.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /MedicalCertificate.Domain.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.sln" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,7 +44,9 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/MedSpravka/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="mock:///Users/kenessarybaigali/RiderProjects/MedSpravka/MedicalCertificate.Core /Enums/CertificateStatus.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
   <component name="ProblemsViewState">
@@ -49,19 +63,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "git-widget-placeholder": "master",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.MedSpravka: http">
     <configuration name="MedSpravka: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MedSpravka/MedSpravka.csproj" />
@@ -117,7 +132,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748927776578</updated>
-      <workItem from="1748927778710" duration="5567000" />
+      <workItem from="1748927778710" duration="7547000" />
     </task>
     <task id="LOCAL-00001" summary="Arch">
       <option name="closed" value="true" />
@@ -143,7 +158,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748934734892</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="solve the problem">
+      <option name="closed" value="true" />
+      <created>1748935372606</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1748935372606</updated>
+    </task>
+    <task id="LOCAL-00005" summary="удалил Class1.cs">
+      <option name="closed" value="true" />
+      <created>1748935570654</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1748935570654</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +197,8 @@
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
     <MESSAGE value="Arch" />
     <MESSAGE value="Clean Architect" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clean Architect" />
+    <MESSAGE value="solve the problem" />
+    <MESSAGE value="удалил Class1.cs" />
+    <option name="LAST_COMMIT_MESSAGE" value="удалил Class1.cs" />
   </component>
 </project>
