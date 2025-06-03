@@ -16,4 +16,7 @@ public class MedicalCertificate
     public CertificateStatus Status { get; set; } = CertificateStatus.Pending;
     public string? ReviewerComment { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+    
+    public Guid UserId { get; set; }
+    public User? User { get; set; }
 }
