@@ -5,7 +5,7 @@ VisualStudioVersion = 17.13.35825.156 d17.13
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalCertificate.Application", "MedicalCertificate.Application\MedicalCertificate.Application.csproj", "{09B8FD22-DEF0-493B-8FC9-589A4C744622}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalCertificate.Core", "MedicalCertificate.Core \MedicalCertificate.Core.csproj", "{8BABBE16-E4C2-4354-A902-6F04575433B4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalCertificate.Domain", "MedicalCertificate.Core \MedicalCertificate.Domain.csproj", "{8BABBE16-E4C2-4354-A902-6F04575433B4}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MedicalCertificate.Infrastructure", "MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj", "{1B54BDC8-D7D6-4E69-A420-C701FFC81274}"
 EndProject

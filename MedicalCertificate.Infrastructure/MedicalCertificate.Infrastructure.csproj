@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MedicalCertificate.Core \MedicalCertificate.Core.csproj" />
+      <ProjectReference Include="..\MedicalCertificate.Core \MedicalCertificate.Domain.csproj" />
     </ItemGroup>
 
 </Project>

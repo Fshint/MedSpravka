@@ -1,4 +1,4 @@
-namespace MedicalCertificate.Core.Enums;
+namespace MedicalCertificate.Domain.Enums;
 
 public enum CertificateStatus
 {

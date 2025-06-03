@@ -7,8 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MedicalCertificate.Core \MedicalCertificate.Core.csproj" />
-      <ProjectReference Include="..\MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj" />
+        <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+            <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
+            <ProjectReference Include="..\MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj" />
     </ItemGroup>
 
 </Project>
