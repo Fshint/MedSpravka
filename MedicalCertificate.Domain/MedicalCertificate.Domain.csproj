@@ -2,12 +2,9 @@
 
     <PropertyGroup>
         <TargetFramework>net8.0</TargetFramework>
+        <RootNamespace>MedicalCertificate.Domain</RootNamespace>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
-    </ItemGroup>
 
 </Project>

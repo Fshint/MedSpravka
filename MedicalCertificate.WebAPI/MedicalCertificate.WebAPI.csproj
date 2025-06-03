@@ -13,7 +13,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\MedicalCertificate.Application\MedicalCertificate.Application.csproj" />
-      <ProjectReference Include="..\MedicalCertificate.Core \MedicalCertificate.Domain.csproj" />
+      <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
       <ProjectReference Include="..\MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj" />
     </ItemGroup>
 
