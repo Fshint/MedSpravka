@@ -5,8 +5,8 @@ namespace MedicalCertificate.Core.Interfaces;
 
 public interface ICertificateRepository
 {
-    Task AddAsync(Entities.MedicalCertificate certificate);
-    Task<Entities.MedicalCertificate?> GetByIdAsync(Guid id);
-    Task<IEnumerable<Entities.MedicalCertificate>> GetByIinAsync(string iin);
+    Task AddAsync(MedicalCertificate certificate);
+    Task<MedicalCertificate?> GetByIdAsync(Guid id);
+    Task<IEnumerable<MedicalCertificate>> GetByIinAsync(string iin);
     Task UpdateStatusAsync(Guid id, CertificateStatus status, string? reviewerComment = null);
 }
