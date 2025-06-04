@@ -5,41 +5,34 @@ using MedicalCertificateEntity = MedicalCertificate.Domain.Entities.MedicalCerti
 
 namespace MedicalCertificate.Infrastructure.Data;
 
-public class CertificateRepository : ICertificateRepository
+public class CertificateRepository(AppDbContext context) : ICertificateRepository
 {
-    private readonly AppDbContext _context;
-
-    public CertificateRepository(AppDbContext context)
-    {
-        _context = context;
-    }
-
     public async Task AddAsync(MedicalCertificateEntity certificate)
     {
-        _context.Certificates.Add(certificate);
-        await _context.SaveChangesAsync();
+        context.Certificates.Add(certificate);
+        await context.SaveChangesAsync();
     }
 
     public async Task<MedicalCertificateEntity?> GetByIdAsync(Guid id)
     {
-        return await _context.Certificates.FindAsync(id);
+        return await context.Certificates.FirstOrDefaultAsync(x => x.Id == id); 
     }
     
     public async Task<IEnumerable<MedicalCertificateEntity>> GetByIINAsync(string iin)
     {
-        return await _context.Certificates
+        return await context.Certificates
             .Where(c => c.IIN == iin)
             .ToListAsync();
     }
 
     public async Task UpdateStatusAsync(Guid id, CertificateStatus status, string? reviewerComment = null)
     {
-        var cert = await _context.Certificates.FindAsync(id);
+        var cert = await context.Certificates.FindAsync(id);
         if (cert != null)
         {
             cert.Status = status;
             cert.ReviewerComment = reviewerComment;
-            await _context.SaveChangesAsync();
+            await context.SaveChangesAsync();
         }
     }
 
