@@ -9,18 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="удалил Class1.cs">
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/MedicalCertificate.Application.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/MedicalCertificate.Application.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Enums/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Enums/CertificateStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Core /MedicalCertificate.Core.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Core /MedicalCertificate.Domain.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.sln" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.sln" afterDir="false" />
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="salam">
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,6 +18,17 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="Git.Settings">
+    <option name="PUSH_TAGS">
+      <GitPushTagMode>
+        <option name="argument" value="--follow-tags" />
+        <option name="title" value="Current Branch" />
+      </GitPushTagMode>
+    </option>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GitHubPullRequestSearchHistory">{
@@ -44,14 +45,8 @@
 }</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/MedSpravka/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" root2="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MedicalCertificate.Core /Entities/MedicalCertificate.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock:///Users/kenessarybaigali/RiderProjects/MedSpravka/MedicalCertificate.Core /Enums/CertificateStatus.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/MedicalCertificate.Core /Interfaces/ICertificateRepository.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
-  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="true" />
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
+  <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -67,13 +62,12 @@
   "keyToString": {
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "#1 on master",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "RiderNuGetOptionsPageId",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -132,55 +126,47 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748927776578</updated>
-      <workItem from="1748927778710" duration="7547000" />
+      <workItem from="1748927778710" duration="3101000" />
     </task>
-    <task id="LOCAL-00001" summary="Arch">
+    <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
-      <created>1748934126506</created>
+      <created>1748944119092</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1748934126506</updated>
+      <updated>1748944119092</updated>
     </task>
-    <task id="LOCAL-00002" summary="Arch">
+    <task id="LOCAL-00002" summary="ss">
       <option name="closed" value="true" />
-      <created>1748934153522</created>
+      <created>1748945503440</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1748934153522</updated>
+      <updated>1748945503440</updated>
     </task>
-    <task id="LOCAL-00003" summary="Clean Architect">
+    <task id="LOCAL-00003" summary="AppDB">
       <option name="closed" value="true" />
-      <created>1748934734892</created>
+      <created>1748949821032</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1748934734892</updated>
+      <updated>1748949821032</updated>
     </task>
-    <task id="LOCAL-00004" summary="solve the problem">
+    <task id="LOCAL-00004" summary="salam">
       <option name="closed" value="true" />
-      <created>1748935372606</created>
+      <created>1749039199416</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1748935372606</updated>
+      <updated>1749039199416</updated>
     </task>
-    <task id="LOCAL-00005" summary="удалил Class1.cs">
-      <option name="closed" value="true" />
-      <created>1748935570654</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1748935570654</updated>
-    </task>
-    <option name="localTasksCounter" value="6" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
-  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -195,10 +181,11 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-    <MESSAGE value="Arch" />
-    <MESSAGE value="Clean Architect" />
-    <MESSAGE value="solve the problem" />
-    <MESSAGE value="удалил Class1.cs" />
-    <option name="LAST_COMMIT_MESSAGE" value="удалил Class1.cs" />
+    <MESSAGE value="commit" />
+    <MESSAGE value="ss" />
+    <MESSAGE value="Роли" />
+    <MESSAGE value="AppDB" />
+    <MESSAGE value="salam" />
+    <option name="LAST_COMMIT_MESSAGE" value="salam" />
   </component>
 </project>

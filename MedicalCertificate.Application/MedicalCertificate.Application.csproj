@@ -7,7 +7,9 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.5.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
+        <PackageReference Include="KDS.Primitives.FluentResult" Version="1.0.0" />
             <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
             <ProjectReference Include="..\MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj" />
     </ItemGroup>

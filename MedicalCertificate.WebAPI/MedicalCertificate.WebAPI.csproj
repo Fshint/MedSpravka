@@ -7,13 +7,14 @@
     </PropertyGroup>
 
     <ItemGroup>
+        <PackageReference Include="MediatR" Version="12.5.0" />
         <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.14"/>
         <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2"/>
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\MedicalCertificate.Application\MedicalCertificate.Application.csproj" />
-      <ProjectReference Include="..\MedicalCertificate.Core \MedicalCertificate.Domain.csproj" />
+      <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
       <ProjectReference Include="..\MedicalCertificate.Infrastructure\MedicalCertificate.Infrastructure.csproj" />
     </ItemGroup>
 
