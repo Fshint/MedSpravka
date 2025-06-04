@@ -1,14 +1,19 @@
-using MedicalCertificate.WebAPI.Middlewares;
+using MedicalCertificate.Infrastructure.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add services to the container.
+// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
 
 var app = builder.Build();
 
-app.UseMiddleware<ExceptionMiddleware>();
-
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
@@ -22,8 +27,6 @@ var summaries = new[]
 
 app.MapGet("/weatherforecast", () =>
     {
-        throw new Exception("Что-то пошло не так!"); 
-
         var forecast = Enumerable.Range(1, 5).Select(index =>
                 new WeatherForecast
                 (
