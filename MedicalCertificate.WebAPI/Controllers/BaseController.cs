@@ -17,14 +17,12 @@ public class BaseController : ControllerBase
                 Detail = "Нету данных",
                 Status = 404
             },
-            
             "BadRequest" => new ProblemDetails
             {
                 Title = "Bad Request",
                 Detail = "Неправильный запрос",
                 Status = 400
             },
-
             "Unauthorized" => new ProblemDetails
             {
                 Title = "Unauthorized",
@@ -49,7 +47,7 @@ public class BaseController : ControllerBase
                 Detail = "Ошибка валидации",
                 Status = 422
             },
-            "UnprocessableEntity," => new ProblemDetails
+            "UnprocessableEntity" => new ProblemDetails
             {
                 Title = "Unprocessable Entity",
                 Detail = "Невозможно обработать сущность",
@@ -66,9 +64,18 @@ public class BaseController : ControllerBase
                 Title = "Service Unavailable",
                 Detail = "Сервис недоступен",
                 Status = 503
+            },
+
+            // ⛑ default fallback
+            _ => new ProblemDetails
+            {
+                Title = "Internal Server Error",
+                Detail = "Произошла неизвестная ошибка",
+                Status = 500
             }
         };
 
         return StatusCode(problemDetails.Status ?? 500, problemDetails);
     }
+
 }

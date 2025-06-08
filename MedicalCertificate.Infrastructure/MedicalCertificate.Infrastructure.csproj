@@ -7,6 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <PackageReference Include="FluentResults" Version="3.16.0" />
       <PackageReference Include="MediatR" Version="12.5.0" />
       <PackageReference Include="npgsql" Version="8.0.0" />
       <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
