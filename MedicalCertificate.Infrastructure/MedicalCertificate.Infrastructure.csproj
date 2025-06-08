@@ -11,6 +11,7 @@
       <PackageReference Include="MediatR" Version="12.5.0" />
       <PackageReference Include="npgsql" Version="8.0.0" />
       <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
+        <ProjectReference Include="..\MedicalCertificate.Application\MedicalCertificate.Application.csproj" />
         <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
         <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="8.0.0" />

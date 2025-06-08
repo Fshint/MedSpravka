@@ -65,8 +65,7 @@ public class BaseController : ControllerBase
                 Detail = "Сервис недоступен",
                 Status = 503
             },
-
-            // ⛑ default fallback
+            
             _ => new ProblemDetails
             {
                 Title = "Internal Server Error",
