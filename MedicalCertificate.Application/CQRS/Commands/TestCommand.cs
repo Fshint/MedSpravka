@@ -8,3 +8,4 @@ public class CreateCertificateCommand : IRequest<Guid>
     public string FullName { get; set; }
     public DateTime Date { get; set; }
 }
+///duewo
