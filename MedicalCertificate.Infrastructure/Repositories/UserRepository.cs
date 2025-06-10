@@ -11,45 +11,48 @@ namespace MedicalCertificate.Infrastructure.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
+        private readonly AppDbContext _appDbContext;
+
         public UserRepository(AppDbContext context) : base(context)
         {
+            _appDbContext = context;
         }
 
         public async Task<User?> GetByUsernameAsync(string username)
         {
-            return await _context.Users
+            return await _appDbContext.Users
                 .FirstOrDefaultAsync(u => u.UserName == username);
         }
         
         public async Task<User?> GetByUsernameWithRoleAsync(string username)
         {
-            return await _context.Users
+            return await _appDbContext.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.UserName == username);
         }
         
         public async Task<User?> GetByIdWithRoleAsync(int id)
         {
-            return await _context.Users
+            return await _appDbContext.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Id == id);
         }
         
         public async Task<IEnumerable<User>> GetAllWithRolesAsync()
         {
-            return await _context.Users
+            return await _appDbContext.Users
                 .Include(u => u.Role)
                 .ToListAsync();
         }
         
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _context.Users.ToListAsync();
+            return await _appDbContext.Users.ToListAsync();
         }
         
         public async Task<User?> GetByIdAsync(int id)
         {
-            return await _context.Users.FindAsync(id);
+            return await _appDbContext.Users.FindAsync(id);
         }
     }
 }
