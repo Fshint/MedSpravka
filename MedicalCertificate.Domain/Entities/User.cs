@@ -1,15 +1,12 @@
-﻿using MedicalCertificate.Domain.Enums;
-using MedicalCertificate.Domain.Entities;
-namespace MedicalCertificate.Domain.Entities;
-
-public class User
+﻿namespace MedicalCertificate.Domain.Entities
 {
-    public Guid Id { get; set; }
-    public string Email { get; set; } = string.Empty;
-    public string FullName { get; set; } = string.Empty;
-    public string IIN { get; set; } = string.Empty;
+    public class User
+    {
+        public int Id { get; set; }
+        public string UserName { get; set; }
+        public int RoleId { get; set; }
+        public Role Role { get; set; }
+        public string PasswordHash { get; set; }
 
-    public UserRole Role { get; set; } = UserRole.Student;
-
-    public List<MedicalCertificate> Certificates { get; set; } = new();
+    }
 }

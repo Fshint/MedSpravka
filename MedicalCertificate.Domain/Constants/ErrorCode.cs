@@ -1,6 +1,6 @@
 ﻿namespace MedicalCertificate.Domain.Constants;
 
-public static class ErrorCodes
+public static class ErrorCode
 {
     public const string NotFound = nameof(NotFound);
     public const string BadRequest = nameof(BadRequest);
@@ -12,4 +12,5 @@ public static class ErrorCodes
     public const string UnprocessableEntity = nameof(UnprocessableEntity);
     public const string TooManyRequests = nameof(TooManyRequests);
     public const string ServiceUnavailable = nameof(ServiceUnavailable);
+    
 }
