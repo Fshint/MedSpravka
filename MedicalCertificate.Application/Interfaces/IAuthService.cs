@@ -1,5 +1,5 @@
 using MedicalCertificate.Application.DTOs;
-using KDS.Primitives.FluentResult;
+using FluentResults;
 
 namespace MedicalCertificate.Application.Interfaces
 {

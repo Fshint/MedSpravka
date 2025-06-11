@@ -2,7 +2,7 @@ using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
 using MedicalCertificate.Domain.Entities;
-using KDS.Primitives.FluentResult;
+using FluentResults;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -29,14 +29,18 @@ namespace MedicalCertificate.Application.Services
 
             if (user == null)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
+                return Result.Fail<AuthResponseDTO>(
+                    new Error("Неверное имя пользователя или пароль")
+                        .WithMetadata("ErrorCode", ErrorCode.Unauthorized));
             }
 
             bool isPasswordValid = BC.Verify(loginDto.Password, user.PasswordHash);
 
             if (!isPasswordValid)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
+                return Result.Fail<AuthResponseDTO>(
+                    new Error("Неверное имя пользователя или пароль")
+                        .WithMetadata("ErrorCode", ErrorCode.Unauthorized));
             }
 
             var token = GenerateJwtToken(user);
@@ -57,7 +61,9 @@ namespace MedicalCertificate.Application.Services
 
             if (existingUser != null)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует"));
+                return Result.Fail<AuthResponseDTO>(
+                    new Error("Пользователь с таким именем уже существует")
+                        .WithMetadata("ErrorCode", ErrorCode.Conflict));
             }
 
             string passwordHash = BC.HashPassword(registerDto.Password);
