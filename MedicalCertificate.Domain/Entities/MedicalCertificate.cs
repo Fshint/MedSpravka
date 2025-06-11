@@ -5,7 +5,7 @@ namespace MedicalCertificate.Domain.Entities;
 
 public class MedicalCertificate
 {
-    public Guid Id { get; set; }
+    public int Id { get; set; }
     public string FullName { get; set; } = string.Empty;
     public string IIN { get; set; } = string.Empty;
     public DateTime StartDate { get; set; }
@@ -17,6 +17,6 @@ public class MedicalCertificate
     public string? ReviewerComment { get; set; }
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
     
-    public Guid UserId { get; set; }
+    public int UserId { get; set; }
     public User? User { get; set; }
 }

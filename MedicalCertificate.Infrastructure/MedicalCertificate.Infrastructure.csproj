@@ -7,7 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <PackageReference Include="FluentResults" Version="3.16.0" />
+        <PackageReference Include="KDS.Primitives.FluentResult" Version="1.0.0" />
       <PackageReference Include="MediatR" Version="12.5.0" />
       <PackageReference Include="npgsql" Version="8.0.0" />
       <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />
@@ -17,6 +17,10 @@
         <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
         <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Folder Include="Data\" />
     </ItemGroup>
 
 </Project>

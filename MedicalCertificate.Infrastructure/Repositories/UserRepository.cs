@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using MedicalCertificate.Application.DTOs;
 
 namespace MedicalCertificate.Infrastructure.Repositories
 {
