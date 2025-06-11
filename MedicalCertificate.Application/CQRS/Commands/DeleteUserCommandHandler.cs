@@ -9,7 +9,7 @@ namespace MedicalCertificate.Application.CQRS.Commands
     {
         public async Task<Result<bool>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var result = await userService.DeleteAsync(request.Id);
+            var result = await userService.DeleteAsync(request.id);
 
             if (result.IsFailed)
                 return Result.Fail<bool>(result.Errors);

@@ -8,7 +8,7 @@ using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AcademicWorkManagerService.Application
+namespace MedicalCertificate.Application
 {
     public static class ServiceCollectionExtensions
     {

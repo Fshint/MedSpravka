@@ -11,6 +11,7 @@ namespace MedicalCertificate.Application.Interfaces
     {
         Task<IEnumerable<User>> GetAllAsync();
         Task<Result<UserDto?>> GetByIdAsync(int id);
+        Task<Result<UserDto?>> GetByUsernameAsync(string username);
         Task<Result<UserDto>> CreateAsync(UserDto userDto);
         Task <Result<UserDto>> UpdateAsync(int id, UserDto userDto);
         Task<Result<bool>> DeleteAsync(int id);
