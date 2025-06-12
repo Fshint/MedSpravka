@@ -1,9 +1,7 @@
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using MediatR;
-using System;
 
 namespace MedicalCertificate.Application.CQRS.Commands
 {
-    public record DeleteUserCommand(int id) : IRequest<Result<bool>>;
-
+    public record DeleteUserCommand(int Id) : IRequest<Result<bool>>;
 }

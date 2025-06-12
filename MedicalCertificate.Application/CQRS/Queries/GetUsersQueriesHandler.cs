@@ -1,34 +1,27 @@
 using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
 using MediatR;
-using FluentResults;
+using System;
+using System.Collections.Generic;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using MedicalCertificate.Domain.Constants;
+using KDS.Primitives.FluentResult;
 
 namespace MedicalCertificate.Application.CQRS.Queries
 {
     public class GetUsersQueryHandler(IUserService userService) : IRequestHandler<GetUsersQuery, Result<UserDto[]>>
     {
+
         public async Task<Result<UserDto[]>> Handle(GetUsersQuery request, CancellationToken cancellationToken)
         {
-            var users = await userService.GetAllAsync();
+            var result = await userService.GetAllAsync();
+            
+            if (result.IsFailed)
+                return Result.Failure<UserDto[]>(new Error(ErrorCode.NotFound, "Пользователей нет."));
 
-            if (users == null || !users.Any())
-            {
-                return Result.Fail<UserDto[]>(
-                    new Error("Пользователей нет.")
-                        .WithMetadata("ErrorCode", Domain.Constants.ErrorCode.NotFound)
-                );
-            }
-
-            var userDtos = users.Select(u => new UserDto
-            {
-                Id = u.Id,
-                UserName = u.UserName,
-                RoleId = u.RoleId,
-                RoleName = "" // добавь при необходимости
-            }).ToArray();
-
-            return Result.Ok(userDtos);
+            return result;
         }
     }
 }

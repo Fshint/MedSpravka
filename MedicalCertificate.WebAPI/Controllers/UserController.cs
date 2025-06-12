@@ -16,7 +16,7 @@ namespace MedicalCertificate.WebAPI.Controllers
         {
             var result = await mediator.Send(new GetUsersQuery());
             if (result.IsFailed)
-                return GenerateProblemResponse(result.Errors);
+                return GenerateProblemResponse(result.Error);
             
             return Ok(result);
         }

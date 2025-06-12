@@ -1,6 +1,6 @@
 using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using MediatR;
 
 namespace MedicalCertificate.Application.CQRS.Commands
@@ -27,7 +27,7 @@ namespace MedicalCertificate.Application.CQRS.Commands
             var result = await userService.UpdateAsync(request.Id, userDto);
 
             if (result.IsFailed)
-                return Result.Fail<UserDto>(result.Errors);
+                return Result.Failure<UserDto>(result.Error);
 
             return result;
         }

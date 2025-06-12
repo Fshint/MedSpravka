@@ -12,7 +12,7 @@
         <PackageReference Include="BCrypt.Net-Next" Version="4.0.2" />
         <PackageReference Include="Microsoft.Extensions.Configuration" Version="8.0.0" />
         <PackageReference Include="Microsoft.Extensions.Configuration.Json" Version="8.0.0" />
-        <PackageReference Include="FluentResults" Version="3.16.0" />
+        <PackageReference Include="KDS.Primitives.FluentResult" Version="1.0.0" />
         <PackageReference Include="MediatR" Version="12.5.0" />
         <PackageReference Include="Microsoft.AspNetCore.Http.Abstractions" Version="2.2.0" />
         <ProjectReference Include="..\MedicalCertificate.Domain\MedicalCertificate.Domain.csproj" />

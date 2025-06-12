@@ -5,7 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 
 namespace MedicalCertificate.Application.CQRS.Queries
 {

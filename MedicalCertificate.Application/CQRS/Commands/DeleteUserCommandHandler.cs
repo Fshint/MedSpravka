@@ -1,5 +1,5 @@
 using MedicalCertificate.Application.Interfaces;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using MediatR;
 
 namespace MedicalCertificate.Application.CQRS.Commands
@@ -9,10 +9,10 @@ namespace MedicalCertificate.Application.CQRS.Commands
     {
         public async Task<Result<bool>> Handle(DeleteUserCommand request, CancellationToken cancellationToken)
         {
-            var result = await userService.DeleteAsync(request.id);
+            var result = await userService.DeleteAsync(request.Id);
 
             if (result.IsFailed)
-                return Result.Fail<bool>(result.Errors);
+                return Result.Failure<bool>(result.Error);
 
             return result;
         }

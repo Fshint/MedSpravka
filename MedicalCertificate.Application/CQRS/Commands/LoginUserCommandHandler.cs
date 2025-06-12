@@ -1,6 +1,6 @@
 using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;

@@ -2,7 +2,7 @@ using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
 using MedicalCertificate.Domain.Entities;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -29,18 +29,14 @@ namespace MedicalCertificate.Application.Services
 
             if (user == null)
             {
-                return Result.Fail<AuthResponseDTO>(
-                    new Error("Неверное имя пользователя или пароль")
-                        .WithMetadata("ErrorCode", ErrorCode.Unauthorized));
+                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
             }
 
             bool isPasswordValid = BC.Verify(loginDto.Password, user.PasswordHash);
 
             if (!isPasswordValid)
             {
-                return Result.Fail<AuthResponseDTO>(
-                    new Error("Неверное имя пользователя или пароль")
-                        .WithMetadata("ErrorCode", ErrorCode.Unauthorized));
+                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
             }
 
             var token = GenerateJwtToken(user);
@@ -61,9 +57,7 @@ namespace MedicalCertificate.Application.Services
 
             if (existingUser != null)
             {
-                return Result.Fail<AuthResponseDTO>(
-                    new Error("Пользователь с таким именем уже существует")
-                        .WithMetadata("ErrorCode", ErrorCode.Conflict));
+                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует"));
             }
 
             string passwordHash = BC.HashPassword(registerDto.Password);
@@ -113,5 +107,4 @@ namespace MedicalCertificate.Application.Services
             return tokenHandler.WriteToken(token);
         }
     }
-    
 }

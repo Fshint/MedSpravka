@@ -1,7 +1,7 @@
 using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
-using FluentResults;
+using KDS.Primitives.FluentResult;
 using MediatR;
 
 namespace MedicalCertificate.Application.CQRS.Queries
@@ -14,7 +14,7 @@ namespace MedicalCertificate.Application.CQRS.Queries
             var user = await userService.GetByUsernameAsync(request.Username);
 
             if (user.IsFailed)
-                return Result.Fail<UserDto?>(user.Errors);
+                return Result.Failure<UserDto?>(user.Error);
 
             return user;
         }
