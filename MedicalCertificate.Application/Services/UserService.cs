@@ -27,7 +27,7 @@ namespace MedicalCertificate.Application.Services
                 return Result.Failure<UserDto[]>(new Error(ErrorCode.NotFound, "Пользователей нет."));
             }
 
-            var userDtos = users.Select(u => new UserDto()
+            var userDtos = users.Select(u => new UserDto
             {
                 Id = u.Id,
                 UserName = u.UserName,
@@ -137,7 +137,7 @@ namespace MedicalCertificate.Application.Services
             user.UserName = userDto.UserName;
             user.RoleId = userDto.RoleId;
 
-            await _unitOfWork.Users.UpdateAsync(user);
+            //await _unitOfWork.Users.UpdateAsync(user);
             await _unitOfWork.SaveChangesAsync();
 
             var updatedUser = await _unitOfWork.Users.GetByIdWithRoleAsync(id);
@@ -161,7 +161,7 @@ namespace MedicalCertificate.Application.Services
                 return Result.Failure<bool>(new Error(ErrorCode.NotFound, $"Пользователь с ID {id} не найден."));
             }
 
-            await _unitOfWork.Users.RemoveAsync(user);
+            //await _unitOfWork.Users.RemoveAsync(user);
             await _unitOfWork.SaveChangesAsync();
 
             return true;

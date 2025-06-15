@@ -1,7 +1,6 @@
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Entities;
 using MedicalCertificate.Infrastructure.Services;
-
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -45,7 +44,6 @@ namespace MedicalCertificate.Infrastructure.Repositories
                 .Include(u => u.Role)
                 .ToListAsync();
         }
-        
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _appDbContext.Users.ToListAsync();

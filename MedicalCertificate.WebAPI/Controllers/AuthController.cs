@@ -1,23 +1,25 @@
 using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.CQRS.Commands;
 using MediatR;
-using MedicalCertificate.WebAPI.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using Mapster;
+using System.Threading.Tasks;
 
-namespace MedicalCertificate.WebAPI.Controllers;
-
-[Route("api/[controller]")]
-public class AuthController(IMediator mediator) : BaseController
+namespace MedicalCertificate.WebAPI.Controllers
 {
-    [HttpPost("login")]
-    public async Task<IActionResult> Login([FromBody] LoginContract request)
+    [Route("api/[controller]")]
+    public class AuthController(IMediator mediator) : BaseController
     {
-        var result = await mediator.Send(request.Adapt<LoginCommand>());
+        [HttpPost("login")]
+        public async Task<IActionResult> Login([FromBody] LoginCommand command)
+        {
+            var result = await mediator.Send(command);
 
-        if (result.IsFailed)
-            return GenerateProblemResponse(result.Errors);
+            if (result.IsFailed)
+            {
+                return GenerateProblemResponse(result.Error);
+            }
 
-        return Ok(result.Value);
+            return Ok(result.Value);
+        }
     }
 }
