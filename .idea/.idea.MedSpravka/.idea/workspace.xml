@@ -4,13 +4,23 @@
     <projectFile profileName="http">MedSpravka/MedSpravka.csproj</projectFile>
     <projectFile profileName="http">MedicalCertificate.Core/MedicalCertificate.Core.csproj</projectFile>
     <projectFile profileName="IIS Express">MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj</projectFile>
+    <projectFile profileName="MedSpravka: http">MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj</projectFile>
+    <projectFile profileName="MedicalCertificate.WebAPI">MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj</projectFile>
     <projectFile profileName="http">MedicalCertificate.WebAPI/MedicalCertificate.WebAPI.csproj</projectFile>
   </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="" />
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/User.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -34,14 +44,14 @@
     &quot;assignee&quot;: &quot;KeneS6Sary&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/Fshint/MedSpravka.git&quot;,
-    &quot;accountId&quot;: &quot;2ac97398-53ad-4209-ae80-616fe4108957&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Fshint/MedSpravka.git",
+    "accountId": "33766bd2-9f7e-4946-8afb-3248253e2f40"
   }
-}</component>
+}]]></component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bd4df5aff92cabbc4d630be64227073db1b8539b3a1e47786b4b189d7cdb7/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="mock://C:/Users/Aisyn/RiderProjects/MedSpravka/MedicalCertificate.Application/Services/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
@@ -113,7 +123,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <browser name="e5120d43-2c3f-47ef-9f26-65e539e05186" />
+      <browser name="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
@@ -141,6 +151,7 @@
       <workItem from="1749536551257" duration="24143000" />
       <workItem from="1749663925023" duration="130000" />
       <workItem from="1749704821147" duration="497000" />
+      <workItem from="1750008218765" duration="4686000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -198,7 +209,15 @@
       <option name="project" value="LOCAL" />
       <updated>1749705247987</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="JWT исправил authservice">
+      <option name="closed" value="true" />
+      <created>1750008563673</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1750008563673</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -227,6 +246,7 @@
     <MESSAGE value="UserController" />
     <MESSAGE value="LoginUserCommand" />
     <MESSAGE value="typeshit" />
-    <option name="LAST_COMMIT_MESSAGE" value="typeshit" />
+    <MESSAGE value="JWT исправил authservice" />
+    <option name="LAST_COMMIT_MESSAGE" value="JWT исправил authservice" />
   </component>
 </project>
