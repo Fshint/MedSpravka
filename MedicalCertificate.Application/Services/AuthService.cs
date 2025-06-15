@@ -15,12 +15,12 @@ namespace MedicalCertificate.Application.Services
     public class AuthService : IAuthService
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IConfiguration _configuration;
+        private readonly JwtConfigurationOptions _jwtConfig;
 
         public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration)
         {
             _unitOfWork = unitOfWork;
-            _configuration = configuration;
+            _jwtConfig = jwtOptions.Value;
         }
 
         public async Task<Result<AuthResponseDTO>> LoginAsync(LoginDTO loginDto)
@@ -87,7 +87,7 @@ namespace MedicalCertificate.Application.Services
         private string GenerateJwtToken(User user)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
-            var key = Encoding.ASCII.GetBytes(_configuration["Jwt:Key"] ?? throw new InvalidOperationException("JWT key is not configured"));
+            var key = Encoding.ASCII.GetBytes(_jwtConfig.Key);
 
             var tokenDescriptor = new SecurityTokenDescriptor
             {
@@ -99,8 +99,8 @@ namespace MedicalCertificate.Application.Services
                 }),
                 Expires = DateTime.UtcNow.AddHours(1),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
-                Issuer = _configuration["Jwt:Issuer"],
-                Audience = _configuration["Jwt:Audience"]
+                Issuer = _jwtConfig.Issuer,
+                Audience = _jwtConfig.Audience
             };
 
             var token = tokenHandler.CreateToken(tokenDescriptor);

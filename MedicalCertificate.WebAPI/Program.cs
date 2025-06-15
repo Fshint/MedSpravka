@@ -1,5 +1,7 @@
+
 using MedicalCertificate.Application;
 using MedicalCertificate.Application.Interfaces;
+using MedicalCertificate.Domain.Options;
 using MedicalCertificate.Application.Services;
 using MedicalCertificate.Infrastructure.Services;
 using MedicalCertificate.Infrastructure.Repositories;
@@ -8,6 +10,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.EntityFrameworkCore;
 using System.Text;
 using MedicalCertificate.Domain;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -26,6 +29,9 @@ builder.Services.AddDomain(builder.Configuration);
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.Configure<JwtConfigurationOptions>(
+    builder.Configuration.GetSection("JwtConfigurationOptions"));
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
