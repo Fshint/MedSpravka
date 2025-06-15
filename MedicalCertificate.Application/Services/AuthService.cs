@@ -2,8 +2,9 @@ using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
 using MedicalCertificate.Domain.Entities;
+using MedicalCertificate.Domain.Options;
 using KDS.Primitives.FluentResult;
-using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
@@ -17,7 +18,7 @@ namespace MedicalCertificate.Application.Services
         private readonly IUnitOfWork _unitOfWork;
         private readonly JwtConfigurationOptions _jwtConfig;
 
-        public AuthService(IUnitOfWork unitOfWork, IConfiguration configuration)
+        public AuthService(IUnitOfWork unitOfWork, IOptions<JwtConfigurationOptions> jwtOptions)
         {
             _unitOfWork = unitOfWork;
             _jwtConfig = jwtOptions.Value;
@@ -97,7 +98,7 @@ namespace MedicalCertificate.Application.Services
                     new Claim(ClaimTypes.Name, user.UserName),
                     new Claim(ClaimTypes.Role, user.Role?.Name ?? string.Empty)
                 }),
-                Expires = DateTime.UtcNow.AddHours(1),
+                Expires = DateTime.UtcNow.AddHours(_jwtConfig.ExpirationHours),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature),
                 Issuer = _jwtConfig.Issuer,
                 Audience = _jwtConfig.Audience
