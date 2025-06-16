@@ -17,9 +17,7 @@
       <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/User.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,12 +42,12 @@
     &quot;assignee&quot;: &quot;KeneS6Sary&quot;
   }
 }</component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/Fshint/MedSpravka.git",
-    "accountId": "33766bd2-9f7e-4946-8afb-3248253e2f40"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Fshint/MedSpravka.git&quot;,
+    &quot;accountId&quot;: &quot;33766bd2-9f7e-4946-8afb-3248253e2f40&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock://C:/Users/Aisyn/RiderProjects/MedSpravka/MedicalCertificate.Application/Services/AuthService.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />

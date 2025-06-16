@@ -7,6 +7,6 @@
         public string Name { get; set; } = string.Empty;
         public string FileType { get; set; } = string.Empty;
 
-        public ICollection<MedicalCertificate>? MedicalCertificates { get; set; }
+        public ICollection<Certificate>? Certificates { get; set; }
     }
 }

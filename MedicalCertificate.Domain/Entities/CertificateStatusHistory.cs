@@ -9,7 +9,7 @@
         public int ChangedBy { get; set; }
         public string Comment { get; set; } = string.Empty;
 
-        public MedicalCertificate? Certificate { get; set; }
+        public Certificate? Certificate { get; set; }
         public CertificateStatus? CertificateStatus { get; set; }
         public User? ChangedByUser { get; set; }
     }
