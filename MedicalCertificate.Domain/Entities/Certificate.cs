@@ -1,6 +1,6 @@
 namespace MedicalCertificate.Domain.Entities
 {
-    public class MedicalCertificate
+    public class Certificate
     {
         public int Id { get; set; }
         public int UserId { get; set; }
