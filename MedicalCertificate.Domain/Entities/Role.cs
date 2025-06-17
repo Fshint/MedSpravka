@@ -10,5 +10,6 @@ namespace MedicalCertificate.Domain.Entities
         [MaxLength(100)]
         public string Name { get; set; } = null!;
         public ICollection<User> Users { get; set; }
+        public ICollection<RoleOperation> RoleOperations { get; set; }
     }
 }

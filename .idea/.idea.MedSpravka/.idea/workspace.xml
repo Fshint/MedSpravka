@@ -13,11 +13,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Operation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/RoleOperation.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatusHistory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/File.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/MedicalCertificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
