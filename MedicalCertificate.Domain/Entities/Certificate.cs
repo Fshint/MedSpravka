@@ -1,6 +1,6 @@
 namespace MedicalCertificate.Domain.Entities
 {
-    public class MedicalCertificate
+    public class Certificate
     {
         public int Id { get; set; }
         public int UserId { get; set; }
@@ -8,7 +8,7 @@ namespace MedicalCertificate.Domain.Entities
         public DateTime EndDate { get; set; }
         public string Clinic { get; set; } = string.Empty;
         public string Comment { get; set; } = string.Empty;
-        public Guid FilePathId { get; set; }
+        public int FilePathId { get; set; }
         public int StatusId { get; set; }
         public string ReviewerComment { get; set; } = string.Empty;
         public DateTime CreatedAt { get; set; }
