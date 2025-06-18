@@ -9,8 +9,8 @@ namespace MedicalCertificate.Application.Interfaces
     {
         Task<Result<UserDto[]>> GetAllAsync();
         Task<Result<UserDto?>> GetByIdAsync(int id);
-        Task<Result<UserDto?>> GetByUsernameAsync(string username);
-        Task<Result<UserDto>> CreateAsync(UserDto userDto);
+        Task<Result<UserDto?>> GetByEmailAsync(string email);
+        Task<Result<UserDto>> CreateAsync(UserDto userDto, CancellationToken cancellationToken);
         Task<Result<UserDto>> UpdateAsync(int id, UserDto userDto);
         Task<Result<bool>> DeleteAsync(int id);
     }

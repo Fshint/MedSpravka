@@ -4,9 +4,10 @@ namespace MedicalCertificate.Application.Interfaces
 {
     public interface IUserRepository : IRepository<User>
     {
-        Task<User?> GetByUsernameAsync(string username);
-        Task<User?> GetByUsernameWithRoleAsync(string username);
+        Task<User?> GetByEmailAsync(string email);
+        Task<User?> GetByEmailWithRoleAsync(string email);
         Task<User?> GetByIdWithRoleAsync(int id);
         Task<IEnumerable<User>> GetAllWithRolesAsync();
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
     }
 }

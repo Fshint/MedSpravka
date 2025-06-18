@@ -1,6 +1,7 @@
 using MedicalCertificate.Application.CQRS.Commands;
 using MedicalCertificate.Application.CQRS.Queries;
 using MediatR;
+using MedicalCertificate.WebAPI.Contracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -8,7 +9,7 @@ namespace MedicalCertificate.WebAPI.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
-    public class UserController(IMediator mediator) : BaseController
+    public class UserController(ILogger<UserController> logger) : BaseController
     {
 
         [HttpGet]
@@ -29,32 +30,42 @@ namespace MedicalCertificate.WebAPI.Controllers
 
             return Ok(result);
         }
-        [HttpGet("username/{username}")]
-        public async Task<IActionResult> GetByUsername(string username)
+        
+        //username or email
+        [HttpGet("email/{email}")]
+        public async Task<IActionResult> GetByUsername(string email)
         {
-            var result = await mediator.Send(new GetUserByUsernameQuery(username));
+            var result = await mediator.Send(new GetUserByEmailQuery(email));
             if (result.IsFailed)
                 return GenerateProblemResponse(result.Error);
             return Ok(result);
         }
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateUserCommand command)
+        public async Task<IActionResult> Post([FromBody] CreateUserRequest createUserRequest)
         {
-            var result = await mediator.Send(command);
+            var result = await mediator.Send(new CreateUserCommand(createUserRequest.UserName, createUserRequest.RoleId));
             if (result.IsFailed)
                 return GenerateProblemResponse(result.Error);
-            return CreatedAtAction(nameof(GetById), new { id = result.Value.Id }, result.Value);
+            return Created();
         }
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(int id, [FromBody] UpdateUserCommand command)
         {
-            var updatedCommand = command with { Id = id };
-            var result = await mediator.Send(updatedCommand);
-            
-            if (result.IsFailed)
-                return GenerateProblemResponse(result.Error);
-            
-            return Ok(result);
+            Dictionary<string,string> log = new Dictionary<string, string>()
+            {
+                {  "UserName",command.UserName}
+            };
+            using (logger.BeginScope(log))
+            {
+
+                var updatedCommand = command with { Id = id };
+                var result = await mediator.Send(updatedCommand);
+
+                if (result.IsFailed)
+                    return GenerateProblemResponse(result.Error);
+
+                return Ok(result);
+            }
         }
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(int id)

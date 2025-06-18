@@ -23,6 +23,7 @@ namespace MedicalCertificate.Infrastructure.Services
             base.OnModelCreating(modelBuilder);
 
             modelBuilder.Entity<User>()
+                .HasQueryFilter(e => !e.IsDeleted)
                 .HasOne(u => u.Role)
                 .WithMany(r => r.Users)
                 .HasForeignKey(u => u.RoleId);

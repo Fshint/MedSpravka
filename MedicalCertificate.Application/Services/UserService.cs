@@ -3,31 +3,22 @@ using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
 using MedicalCertificate.Domain.Entities;
 using KDS.Primitives.FluentResult;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace MedicalCertificate.Application.Services
-{
+namespace MedicalCertificate.Application.Services;
+
     public class UserService : IUserService
     {
-        private readonly IUnitOfWork _unitOfWork;
-
-        public UserService(IUnitOfWork unitOfWork)
+        private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository)
         {
-            _unitOfWork = unitOfWork;
+            _userRepository = userRepository;
+            _roleRepository = roleRepository;
         }
 
         public async Task<Result<UserDto[]>> GetAllAsync()
         {
-            var users = await _unitOfWork.Users.GetAllWithRolesAsync();
-
-            if (!users.Any())
-            {
-                return Result.Failure<UserDto[]>(new Error(ErrorCode.NotFound, "Пользователей нет."));
-            }
-
-            var userDtos = users.Select(u => new UserDto
+            var users = (await _userRepository.GetAllWithRolesAsync()).Select(u => new UserDto
             {
                 Id = u.Id,
                 UserName = u.UserName,
@@ -35,36 +26,39 @@ namespace MedicalCertificate.Application.Services
                 RoleName = u.Role?.Name ?? string.Empty
             }).ToArray();
 
-            return userDtos;
+            if (users.Length == 0)
+            {
+                return Result.Failure<UserDto[]>(new Error(ErrorCode.NotFound, "Пользователей нет."));
+            }
+
+            return users;
         }
 
         public async Task<Result<UserDto?>> GetByIdAsync(int id)
         {
-            var user = await _unitOfWork.Users.GetByIdWithRoleAsync(id);
+            var user = await _userRepository.GetByIdWithRoleAsync(id);
 
             if (user == null)
             {
                 return Result.Failure<UserDto?>(new Error(ErrorCode.NotFound, $"Пользователь с ID {id} не найден."));
             }
 
-            var userDto = new UserDto
+          return new UserDto
             {
                 Id = user.Id,
                 UserName = user.UserName,
                 RoleId = user.RoleId,
                 RoleName = user.Role?.Name ?? string.Empty
             };
-
-            return userDto;
         }
 
-        public async Task<Result<UserDto?>> GetByUsernameAsync(string username)
+        public async Task<Result<UserDto?>> GetByEmailAsync(string email)
         {
-            var user = await _unitOfWork.Users.GetByUsernameWithRoleAsync(username);
+            var user = await _userRepository.GetByEmailWithRoleAsync(email);
 
             if (user == null)
             {
-                return Result.Failure<UserDto?>(new Error(ErrorCode.NotFound, $"Пользователь с именем {username} не найден."));
+                return Result.Failure<UserDto?>(new Error(ErrorCode.NotFound, $"Пользователь с именем {email} не найден."));
             }
 
             var userDto = new UserDto
@@ -74,97 +68,83 @@ namespace MedicalCertificate.Application.Services
                 RoleId = user.RoleId,
                 RoleName = user.Role?.Name ?? string.Empty
             };
-
-            return userDto;
-        }
-
-        public async Task<Result<UserDto>> CreateAsync(UserDto userDto)
-        {
-            var existingUser = await _unitOfWork.Users.GetByUsernameAsync(userDto.UserName);
-            if (existingUser != null)
-            {
-                return Result.Failure<UserDto>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует."));
-            }
-
-            var role = await _unitOfWork.Roles.GetByIdAsync(userDto.RoleId);
-            if (role == null)
-            {
-                return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, $"Роль с ID {userDto.RoleId} не найдена."));
-            }
-
-            var user = new User
-            {
-                UserName = userDto.UserName,
-                RoleId = userDto.RoleId
-            };
-
-            await _unitOfWork.Users.AddAsync(user);
-            await _unitOfWork.SaveChangesAsync();
-
-            var createdUser = await _unitOfWork.Users.GetByIdWithRoleAsync(user.Id);
-            if (createdUser == null)
-            {
-                return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, "Ошибка при получении созданного пользователя."));
-            }
-
-            userDto.Id = createdUser.Id;
-            userDto.RoleName = createdUser.Role?.Name ?? string.Empty;
             
             return userDto;
         }
 
+        public async Task<Result<UserDto>> CreateAsync(UserDto userDto, CancellationToken cancellationToken)
+        {
+                var existingUser = await _userRepository.GetByEmailAsync(userDto.Email);
+                if (existingUser is not null)
+                {
+                    return Result.Failure<UserDto>(new Error(ErrorCode.Conflict,
+                        "Пользователь с таким именем уже существует."));
+                }
+
+                var user = new User
+                {
+                    UserName = userDto.UserName,
+                    RoleId = userDto.RoleId
+                };
+
+                await _userRepository.AddAsync(user);
+
+                userDto.Id = user.Id;
+                userDto.RoleName = (await _roleRepository.GetByIdAsync(user.RoleId))?.Name ?? string.Empty;
+
+                return Result.Success(userDto);
+        }
+
         public async Task<Result<UserDto>> UpdateAsync(int id, UserDto userDto)
         {
-            var user = await _unitOfWork.Users.GetByIdAsync(id);
+            var user = await _userRepository.GetByIdAsync(id);
 
-            if (user == null)
+            if (user is null)
             {
                 return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, $"Пользователь с ID {id} не найден."));
             }
 
-            var existingUser = await _unitOfWork.Users.GetByUsernameAsync(userDto.UserName);
-            if (existingUser != null && existingUser.Id != id)
+            var existingUser = await _userRepository.GetByEmailAsync(userDto.Email);
+            if (existingUser is not null && existingUser.Id != id)
             {
                 return Result.Failure<UserDto>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует."));
             }
 
-            var role = await _unitOfWork.Roles.GetByIdAsync(userDto.RoleId);
-            if (role == null)
+            var role = await _roleRepository.GetByIdAsync(userDto.RoleId);
+            if (role is null)
             {
                 return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, $"Роль с ID {userDto.RoleId} не найдена."));
             }
 
             user.UserName = userDto.UserName;
             user.RoleId = userDto.RoleId;
-
-            //await _unitOfWork.Users.UpdateAsync(user);
-            await _unitOfWork.SaveChangesAsync();
-
-            var updatedUser = await _unitOfWork.Users.GetByIdWithRoleAsync(id);
-            if (updatedUser == null)
-            {
-                return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, "Ошибка при получении обновленного пользователя."));
-            }
-
-            userDto.Id = updatedUser.Id;
-            userDto.RoleName = updatedUser.Role?.Name ?? string.Empty;
             
-            return userDto;
+            _userRepository.Update(user);
+            await _userRepository.SaveChangesAsync();
+
+            var updatedUser = await _userRepository.GetByIdWithRoleAsync(id);
+            if (updatedUser is null)
+                return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, "Ошибка при получении обновленного пользователя."));
+
+            return new UserDto
+            {
+                Id = updatedUser.Id,
+                UserName = updatedUser.UserName,
+                RoleId = updatedUser.RoleId,
+                RoleName = updatedUser.Role?.Name ?? string.Empty
+            };
         }
 
         public async Task<Result<bool>> DeleteAsync(int id)
         {
-            var user = await _unitOfWork.Users.GetByIdAsync(id);
+            var user = await _userRepository.GetByIdAsync(id);
 
-            if (user == null)
-            {
+            if (user is null)
                 return Result.Failure<bool>(new Error(ErrorCode.NotFound, $"Пользователь с ID {id} не найден."));
-            }
 
-            //await _unitOfWork.Users.RemoveAsync(user);
-            await _unitOfWork.SaveChangesAsync();
+            user.IsDeleted = true;
+            await _userRepository.SaveChangesAsync();
 
             return true;
         }
     }
-}

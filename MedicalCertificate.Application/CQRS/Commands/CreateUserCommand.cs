@@ -5,12 +5,10 @@ using System.Text.Json.Serialization;
 
 namespace MedicalCertificate.Application.CQRS.Commands
 {
-    public class CreateUserCommand : IRequest<Result<UserDto>>
+    public class CreateUserCommand(string userName, int roleId) : IRequest<Result<UserDto>>
     {
-        [JsonPropertyName("userName")]
-        public string UserName { get; set; } = string.Empty;
+        public string UserName { get;  } = userName;
 
-        [JsonPropertyName("roleId")]
-        public int RoleId { get; set; }
+        public int RoleId { get; } = roleId;
     }
 }
