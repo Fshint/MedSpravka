@@ -18,21 +18,22 @@ namespace MedicalCertificate.Infrastructure.Repositories
             _appDbContext = context;
         }
 
-        public async Task<User?> GetByUsernameAsync(string username)
+        public async Task<User?> GetByEmailAsync(string email)
         {
             return await _appDbContext.Users
-                .FirstOrDefaultAsync(u => u.UserName == username);
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
         
-        public async Task<User?> GetByUsernameWithRoleAsync(string username)
+        public async Task<User?> GetByEmailWithRoleAsync(string email)
         {
             return await _appDbContext.Users
                 .Include(u => u.Role)
-                .FirstOrDefaultAsync(u => u.UserName == username);
+                .FirstOrDefaultAsync(u => u.Email == email);
         }
         
         public async Task<User?> GetByIdWithRoleAsync(int id)
         {
+            
             return await _appDbContext.Users
                 .Include(u => u.Role)
                 .FirstOrDefaultAsync(u => u.Id == id);
@@ -47,6 +48,11 @@ namespace MedicalCertificate.Infrastructure.Repositories
         public async Task<IEnumerable<User>> GetAllAsync()
         {
             return await _appDbContext.Users.ToListAsync();
+        }
+
+        public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+        {
+            return await _appDbContext.SaveChangesAsync(cancellationToken);
         }
         
         public async Task<User?> GetByIdAsync(int id)

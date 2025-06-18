@@ -1,4 +1,3 @@
-
 using MedicalCertificate.Application;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Options;
@@ -11,18 +10,17 @@ using Microsoft.EntityFrameworkCore;
 using System.Text;
 using MedicalCertificate.Domain;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers();
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped<IRoleRepository, RoleRepository>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<DbContext, AppDbContext>();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddDomain(builder.Configuration);

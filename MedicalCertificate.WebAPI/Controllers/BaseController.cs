@@ -1,12 +1,14 @@
 ﻿using MedicalCertificate.Domain.Constants;
 using KDS.Primitives.FluentResult;
+using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalCertificate.WebAPI.Controllers;
 
 [ApiController]
 public class BaseController : ControllerBase
-{
+{ 
+    public IMediator mediator => HttpContext.RequestServices.GetService<IMediator>();
     [NonAction]
     public IActionResult GenerateProblemResponse(Error error)
     {

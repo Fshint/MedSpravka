@@ -15,20 +15,20 @@ namespace MedicalCertificate.Application.Services
 {
     public class AuthService : IAuthService
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserRepository _userRepository;
         private readonly JwtConfigurationOptions _jwtConfig;
 
-        public AuthService(IUnitOfWork unitOfWork, IOptions<JwtConfigurationOptions> jwtOptions)
+        public AuthService(IUserService userService, IUserRepository userRepository, IOptions<JwtConfigurationOptions> jwtOptions)
         {
-            _unitOfWork = unitOfWork;
+            _userRepository = userRepository;
             _jwtConfig = jwtOptions.Value;
         }
 
         public async Task<Result<AuthResponseDTO>> LoginAsync(LoginDTO loginDto)
         {
-            var user = await _unitOfWork.Users.GetByUsernameAsync(loginDto.UserName);
+            var user = await _userRepository.GetByEmailAsync(loginDto.Email);
 
-            if (user == null)
+            if (user is null)
             {
                 return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
             }
@@ -45,7 +45,7 @@ namespace MedicalCertificate.Application.Services
             return new AuthResponseDTO
             {
                 Token = token,
-                UserName = user.UserName,
+                Email = user.Email,
                 RoleId = user.RoleId,
                 RoleName = user.Role?.Name ?? string.Empty,
                 UserId = user.Id
@@ -54,9 +54,9 @@ namespace MedicalCertificate.Application.Services
 
         public async Task<Result<AuthResponseDTO>> RegisterAsync(RegisterDTO registerDto)
         {
-            var existingUser = await _unitOfWork.Users.GetByUsernameAsync(registerDto.UserName);
+            var existingUser = await _userRepository.GetByEmailAsync(registerDto.Email);
 
-            if (existingUser != null)
+            if (existingUser is not null)
             {
                 return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует"));
             }
@@ -65,20 +65,20 @@ namespace MedicalCertificate.Application.Services
 
             var user = new User
             {
-                UserName = registerDto.UserName,
+                Email = registerDto.Email,
                 RoleId = registerDto.RoleId,
                 PasswordHash = passwordHash
             };
 
-            await _unitOfWork.Users.AddAsync(user);
-            await _unitOfWork.SaveChangesAsync();
+            await _userRepository.AddAsync(user);
+            await _userRepository.SaveChangesAsync();
 
             var token = GenerateJwtToken(user);
 
             return new AuthResponseDTO
             {
                 Token = token,
-                UserName = user.UserName,
+                Email = user.Email,
                 RoleId = user.RoleId,
                 RoleName = user.Role?.Name ?? string.Empty,
                 UserId = user.Id
@@ -95,7 +95,7 @@ namespace MedicalCertificate.Application.Services
                 Subject = new ClaimsIdentity(new[]
                 {
                     new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
-                    new Claim(ClaimTypes.Name, user.UserName),
+                    new Claim(ClaimTypes.Email, user.Email),
                     new Claim(ClaimTypes.Role, user.Role?.Name ?? string.Empty)
                 }),
                 Expires = DateTime.UtcNow.AddHours(_jwtConfig.ExpirationHours),
