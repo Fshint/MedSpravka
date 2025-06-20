@@ -8,7 +8,7 @@ using MedicalCertificate.Domain.Entities;
 
 namespace MedicalCertificate.Application.CQRS.Commands; 
 
-public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResponseDTO>>
+public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResponseDto>>
 {
     private readonly IAuthService _authService; 
     private readonly IUserService _userService;
@@ -18,7 +18,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResp
         _userService = userService;
     }
 
-    public async Task<Result<AuthResponseDTO>> Handle(LoginCommand request, CancellationToken cancellationToken) 
+    public async Task<Result<AuthResponseDto>> Handle(LoginCommand request, CancellationToken cancellationToken) 
     { 
         var loginDto = new LoginDTO 
         { 
@@ -35,7 +35,7 @@ public class LoginCommandHandler : IRequestHandler<LoginCommand, Result<AuthResp
         {
             var roleResult = await _userService.GetByIdAsync(result.Value.RoleId);
             if (roleResult.IsFailed)
-                return Result.Failure<AuthResponseDTO>(roleResult.Error);
+                return Result.Failure<AuthResponseDto>(roleResult.Error);
         }
         return result; 
     }

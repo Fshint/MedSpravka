@@ -17,12 +17,10 @@
       <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.0" />
       <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.0" />
-      <PackageReference Include="Minio" Version="6.0.4" PrivateAssets="true" />
-        
-    </ItemGroup>
+      <PackageReference Include="Minio" Version="6.0.4" />
 
-    <ItemGroup>
-      <Folder Include="Data\" />
+
+
     </ItemGroup>
 
 </Project>

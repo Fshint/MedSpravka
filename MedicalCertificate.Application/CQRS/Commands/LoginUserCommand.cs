@@ -5,7 +5,7 @@ using System.Text.Json.Serialization;
 
 namespace MedicalCertificate.Application.CQRS.Commands; 
 
-public class LoginCommand : IRequest<Result<AuthResponseDTO>> 
+public class LoginCommand : IRequest<Result<AuthResponseDto>> 
 { 
     [JsonPropertyName("email")] 
     public string email { get; set; } = null!;

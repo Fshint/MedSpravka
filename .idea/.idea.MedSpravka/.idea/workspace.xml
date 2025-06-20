@@ -13,11 +13,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Operation.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/RoleOperation.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/FileUploadRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IFileStorageService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Services/MinioFileStorageService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/FileController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Certificate.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/Role.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/AssemblyReferense.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/AssemblyReferense.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommand.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommandHandler.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/AuthResponseDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/AuthResponseDTO.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IAuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/AuthService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/ServicesCollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/ServicesCollectionExtensions.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -215,7 +226,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750008563673</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Добавил библиотеку minio">
+      <option name="closed" value="true" />
+      <created>1750242232412</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1750242232412</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +242,12 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="false" />
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
+  <component name="UnknownFeatures">
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.Identity.Client" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Abstractions" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore.Relational" />
+    <option featureType="dependencySupport" implementationName="dotnet:Microsoft.EntityFrameworkCore" />
+  </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
       <map>
@@ -245,6 +270,7 @@
     <MESSAGE value="LoginUserCommand" />
     <MESSAGE value="typeshit" />
     <MESSAGE value="JWT исправил authservice" />
-    <option name="LAST_COMMIT_MESSAGE" value="JWT исправил authservice" />
+    <MESSAGE value="Добавил библиотеку minio" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добавил библиотеку minio" />
   </component>
 </project>

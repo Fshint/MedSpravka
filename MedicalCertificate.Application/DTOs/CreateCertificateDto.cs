@@ -1,7 +1,7 @@
 namespace MedicalCertificate.Application.DTOs;
 using Microsoft.AspNetCore.Http;
 
-public class CreateCertificateDto
+public class CreateCertificateDto 
 {
     public string FullName { get; set; } = string.Empty;
     public string Iin { get; set; } = string.Empty;

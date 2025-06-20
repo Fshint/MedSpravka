@@ -24,25 +24,25 @@ namespace MedicalCertificate.Application.Services
             _jwtConfig = jwtOptions.Value;
         }
 
-        public async Task<Result<AuthResponseDTO>> LoginAsync(LoginDTO loginDto)
+        public async Task<Result<AuthResponseDto>> LoginAsync(LoginDTO loginDto)
         {
             var user = await _userRepository.GetByEmailAsync(loginDto.Email);
 
             if (user is null)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
+                return Result.Failure<AuthResponseDto>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
             }
 
             bool isPasswordValid = BC.Verify(loginDto.Password, user.PasswordHash);
 
             if (!isPasswordValid)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
+                return Result.Failure<AuthResponseDto>(new Error(ErrorCode.Unauthorized, "Неверное имя пользователя или пароль"));
             }
 
             var token = GenerateJwtToken(user);
 
-            return new AuthResponseDTO
+            return new AuthResponseDto
             {
                 Token = token,
                 Email = user.Email,
@@ -52,13 +52,13 @@ namespace MedicalCertificate.Application.Services
             };
         }
 
-        public async Task<Result<AuthResponseDTO>> RegisterAsync(RegisterDTO registerDto)
+        public async Task<Result<AuthResponseDto>> RegisterAsync(RegisterDTO registerDto)
         {
             var existingUser = await _userRepository.GetByEmailAsync(registerDto.Email);
 
             if (existingUser is not null)
             {
-                return Result.Failure<AuthResponseDTO>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует"));
+                return Result.Failure<AuthResponseDto>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует"));
             }
 
             string passwordHash = BC.HashPassword(registerDto.Password);
@@ -75,7 +75,7 @@ namespace MedicalCertificate.Application.Services
 
             var token = GenerateJwtToken(user);
 
-            return new AuthResponseDTO
+            return new AuthResponseDto
             {
                 Token = token,
                 Email = user.Email,

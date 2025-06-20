@@ -4,14 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MedicalCertificate.Application.DTOs 
+namespace MedicalCertificate.Application.DTOs;
+public class AuthResponseDto
 {
-    public class AuthResponseDTO
-    {
-        public string Token { get; set; } = null!;
-        public string Email { get; set; } = null!;
-        public int RoleId { get; set; }
-        public string RoleName { get; set; } = null!;
-        public int UserId { get; set; }
-    }
+    public string Token { get; set; } = null!;
+    public string Email { get; set; } = null!;
+    public int RoleId { get; set; }
+    public string RoleName { get; set; } = null!;
+    public int UserId { get; set; }
 }
+    

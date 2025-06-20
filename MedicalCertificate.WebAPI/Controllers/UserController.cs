@@ -2,12 +2,10 @@ using MedicalCertificate.Application.CQRS.Commands;
 using MedicalCertificate.Application.CQRS.Queries;
 using MediatR;
 using MedicalCertificate.WebAPI.Contracts;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MedicalCertificate.WebAPI.Controllers
 {
-    [Authorize]
     [Route("api/[controller]")]
     public class UserController(ILogger<UserController> logger) : BaseController
     {
@@ -31,7 +29,6 @@ namespace MedicalCertificate.WebAPI.Controllers
             return Ok(result);
         }
         
-        //username or email
         [HttpGet("email/{email}")]
         public async Task<IActionResult> GetByUsername(string email)
         {
