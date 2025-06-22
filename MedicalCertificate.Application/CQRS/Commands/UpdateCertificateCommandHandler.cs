@@ -1,5 +1,6 @@
 ﻿using MedicalCertificate.Application.DTOs;
 using MedicalCertificate.Application.Interfaces;
+using MedicalCertificate.Application.Services;
 using MedicalCertificate.Application.CQRS.Commands;
 using KDS.Primitives.FluentResult;
 using MediatR;
@@ -8,12 +9,13 @@ namespace MedicalCertificate.Application.CQRS.Commands;
 
 public class UpdateCertificateCommandHandler : IRequestHandler<UpdateCertificateCommand, Result<CertificateDto>>
 {
-    private readonly ICertificateService сertificateService;
+    private readonly ICertificateService certificateService;
 
-    public UpdateCertificateCommandHandler(ICertificateService сertificateService)
+    public UpdateCertificateCommandHandler(ICertificateService certificateService)
     {
-        this.сertificateService = сertificateService;
+        this.certificateService = certificateService;
     }
+
 
     public async Task<Result<CertificateDto>> Handle(UpdateCertificateCommand request, CancellationToken cancellationToken)
     {

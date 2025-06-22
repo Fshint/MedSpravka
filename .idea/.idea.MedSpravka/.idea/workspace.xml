@@ -12,11 +12,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Services/MinioOptions.cs" afterDir="false" />
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="Minio добавил.">
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/CreateCertifiacateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/CreateCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/DeleteCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/DeleteCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/UpdateCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/UpdateCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateByIdQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CertificateDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/CertificateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/CreateCertificateRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/CertificateController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/appsettings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/UserService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,20 +83,20 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.MedicalCertificate.WebAPI: http.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.MedicalCertificate.WebAPI: http.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.MedicalCertificate.WebAPI: http">
     <configuration name="MedSpravka: http" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/MedSpravka/MedSpravka.csproj" />
@@ -152,7 +167,6 @@
       <workItem from="1750414307222" duration="581000" />
       <workItem from="1750414920420" duration="7335000" />
       <workItem from="1750594565217" duration="1189000" />
-      <workItem from="1750595902888" duration="4698000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -234,15 +248,7 @@
       <option name="project" value="LOCAL" />
       <updated>1750414472410</updated>
     </task>
-    <task id="LOCAL-00011" summary="Сущность">
-      <option name="closed" value="true" />
-      <created>1750595935703</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1750595935703</updated>
-    </task>
-    <option name="localTasksCounter" value="12" />
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -280,7 +286,6 @@
     <MESSAGE value="JWT исправил authservice" />
     <MESSAGE value="Добавил библиотеку minio" />
     <MESSAGE value="Minio добавил" />
-    <MESSAGE value="Сущность" />
-    <option name="LAST_COMMIT_MESSAGE" value="Сущность" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minio добавил" />
   </component>
 </project>

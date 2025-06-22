@@ -6,7 +6,7 @@ using Microsoft.Extensions.Logging;
 
 namespace MedicalCertificate.Application.CQRS.Commands;
 
-/*public class CreateUserCommandHandler(IUserService userService,ILogger<CreateUserCommandHandler> logger)
+public class CreateUserCommandHandler(IUserService userService,ILogger<CreateUserCommandHandler> logger)
     : IRequestHandler<CreateUserCommand, Result<UserDto>>
 {
     public async Task<Result<UserDto>> Handle(CreateUserCommand request, CancellationToken cancellationToken)
@@ -23,4 +23,4 @@ namespace MedicalCertificate.Application.CQRS.Commands;
         logger.LogInformation("Клиент создан");
         return result;
     }
-}*/
+}

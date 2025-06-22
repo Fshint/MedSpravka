@@ -7,11 +7,11 @@ namespace MedicalCertificate.Application.CQRS.Commands
 {
     public class UpdateUserCommandHandler : IRequestHandler<UpdateUserCommand, Result<UserDto>>
     {
-        private readonly IUserService userService;
+        private readonly IUserService _userService;
 
         public UpdateUserCommandHandler(IUserService userService)
         {
-            this.userService = userService;
+            this._userService = userService;
         }
 
         public async Task<Result<UserDto>> Handle(UpdateUserCommand request, CancellationToken cancellationToken)
@@ -24,7 +24,7 @@ namespace MedicalCertificate.Application.CQRS.Commands
                 RoleName = request.RoleName
             };
 
-            var result = await userService.UpdateAsync(request.Id, userDto);
+            var result = await _userService.UpdateAsync(request.Id, userDto);
 
             if (result.IsFailed)
                 return Result.Failure<UserDto>(result.Error);

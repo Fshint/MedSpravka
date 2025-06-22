@@ -1,18 +1,13 @@
 ﻿using MedicalCertificate.Application.DTOs;
 using KDS.Primitives.FluentResult;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 
-namespace MedicalCertificate.Application.CQRS.Commands.CreateCertificateCommand;
 
-public class CreateThemeCommand : IRequest<Result<CertificateDto>>
+namespace MedicalCertificate.Application.CQRS.Commands;
+
+public class CreateCertificateCommand : IRequest<Result<CertificateDto>>
 {
-    public string UserId { get; set; }
+    public int UserId { get; set; }
 
     public DateTime StartDate { get; set; }
 

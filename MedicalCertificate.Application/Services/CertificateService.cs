@@ -3,10 +3,7 @@ using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Domain.Constants;
 using MedicalCertificate.Domain.Entities;
 using KDS.Primitives.FluentResult;
-using Microsoft.EntityFrameworkCore;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+
 
 namespace MedicalCertificate.Application.Services
 {
@@ -15,29 +12,30 @@ namespace MedicalCertificate.Application.Services
         private readonly ICertificateRepository _certificateRepository;
         public CertificateService(ICertificateRepository certificateRepository)
         {
-            _Certificaterepository = CertificateRepository;
+            _certificateRepository = certificateRepository;
         }
 
-        public async Task<Result<CertificateDto>> CreateAsync(CertificateDto dto)
+        public async Task<Result<CertificateDto>> CreateAsync(CertificateDto dto, CancellationToken cancellationToken)
         {
             var certificate = new Certificate
             {
-                Title = dto.Title,
-                Description = dto.Description,
-                WorkType = dto.WorkType,
-                IsStudentSuggested = dto.IsStudentSuggested,
-                CreatedByUserId = dto.CreatedByUserId,
-                SupervisorId = dto.SupervisorId,
+                UserId = dto.UserId,
+                StartDate = dto.StartDate,
+                EndDate = dto.EndDate,
+                Clinic = dto.Clinic,
+                Comment = dto.Comment,
+                FilePathId = dto.FilePathId,
                 StatusId = dto.StatusId,
-                IsApprovedByDepartment = dto.IsApprovedByDepartment
+                ReviewerComment = dto.ReviewerComment,
+                CreatedAt = dto.CreatedAt
             };
 
-            await _unitOfWork.Certificate.AddAsync(certificate);
-            await _unitOfWork.SaveChangesAsync();
+            await _certificateRepository.AddAsync(certificate);
+            await _certificateRepository.SaveChangesAsync();
 
-            var created = await _unitOfWork.Certificate.GetByIdAsync(certificate.Id);
+            var created = await _certificateRepository.GetByIdAsync(certificate.Id);
             if (created == null)
-                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, "Ошибка при получении созданной темы."));
+                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, "Ошибка при получении созданной справки."));
 
             dto.Id = created.Id;
             return dto;
@@ -45,45 +43,40 @@ namespace MedicalCertificate.Application.Services
 
         public async Task<Result<CertificateDto?>> GetByIdAsync(int id)
         {
-            var certificate = await _unitOfWork.Certificate.GetByIdAsync(id);
+            var certificate = await _certificateRepository.GetByIdAsync(id);
 
             if (certificate == null)
-                return Result.Failure<CertificateDto?>(new Error(ErrorCode.NotFound, $"Тема с ID {id} не найдена."));
+                return Result.Failure<CertificateDto?>(new Error(ErrorCode.NotFound, $"Cправка с ID {id} не найдена."));
 
             var dto = new CertificateDto
             {
                 Id = certificate.Id,
-                Title = certificate.Title,
-                Description = certificate.Description,
-                WorkType = certificate.WorkType,
-                IsStudentSuggested = certificate.IsStudentSuggested,
-                CreatedByUserId = certificate.CreatedByUserId,
-                SupervisorId = certificate.SupervisorId,
+                UserId = certificate.UserId,
+                StartDate = certificate.StartDate,
+                EndDate = certificate.EndDate,
+                Clinic = certificate.Clinic,
+                Comment = certificate.Comment,
+                FilePathId = certificate.FilePathId,
                 StatusId = certificate.StatusId,
-                IsApprovedByDepartment = certificate.IsApprovedByDepartment
+                ReviewerComment = certificate.ReviewerComment,
+                CreatedAt = certificate.CreatedAt
             };
 
             return dto;
         }
 
-        public async Task<Result<CerficateDTO[]>> GetAllAsync()
+        public async Task<Result<CertificateDto[]>> GetAllAsync()
         {
-            var certificate = await _unitOfWork.Certificates.GetAllAsync();
+            var certificates = await _certificateRepository.GetAllAsync();
 
             if (!certificates.Any())
-                return Result.Failure<CertificateDto[]>(new Error(ErrorCode.NotFound, "Сертификатов нет."));
+                return Result.Failure<CertificateDto[]>(new Error(ErrorCode.NotFound, "Справок нет."));
 
             var result = certificates.Select(certificate => new CertificateDto
             {
                 Id = certificate.Id,
-                Title = certificate.Title,
-                Description = certificate.Description,
-                WorkType = certificate.WorkType,
-                IsStudentSuggested = certificate.IsStudentSuggested,
-                CreatedByUserId = certificate.CreatedByUserId,
-                SupervisorId = certificate.SupervisorId,
-                StatusId = certificate.StatusId,
-                IsApprovedByDepartment = certificate.IsApprovedByDepartment
+                UserId = certificate.UserId
+                
             }).ToArray();
 
             return result;
@@ -91,25 +84,26 @@ namespace MedicalCertificate.Application.Services
 
         public async Task<Result<CertificateDto>> UpdateAsync(int id, CertificateDto dto)
         {
-            var certificate = await _unitOfWork.Certificates.GetByIdAsync(id);
+            var certificate = await _certificateRepository.GetByIdAsync(id);
 
             if (certificate == null)
-                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, $"Тема с ID {id} не найдена."));
+                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, $"Справка с ID {id} не найдена."));
 
-            certificate.Title = dto.Title;
-            certificate.Description = dto.Description;
-            certificate.WorkType = dto.WorkType;
-            certificate.IsStudentSuggested = dto.IsStudentSuggested;
-            certificate.SupervisorId = dto.SupervisorId;
+            certificate.UserId = dto.UserId;
+            certificate.StartDate = dto.StartDate;
+            certificate.EndDate = dto.EndDate;
+            certificate.Clinic = dto.Clinic;
+            certificate.Comment = dto.Comment;
+            certificate.FilePathId = dto.FilePathId;
             certificate.StatusId = dto.StatusId;
-            certificate.IsApprovedByDepartment = dto.IsApprovedByDepartment;
+            certificate.ReviewerComment = dto.ReviewerComment;
+            certificate.CreatedAt = dto.CreatedAt;
+            
+            await _certificateRepository.SaveChangesAsync();
 
-            await _unitOfWork.Certificate.UpdateAsync(certificate);
-            await _unitOfWork.SaveChangesAsync();
-
-            var updated = await _unitOfWork.Certificates.GetByIdAsync(id);
+            var updated = await _certificateRepository.GetByIdAsync(id);
             if (updated == null)
-                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, "Ошибка при получении обновлённой темы."));
+                return Result.Failure<CertificateDto>(new Error(ErrorCode.NotFound, "Ошибка при получении обновлённой справки."));
 
             dto.Id = updated.Id;
             return dto;
@@ -117,13 +111,13 @@ namespace MedicalCertificate.Application.Services
 
         public async Task<Result<bool>> DeleteAsync(int id)
         {
-            var certificate = await _unitOfWork.Certificates.GetByIdAsync(id);
+            var certificate = await _certificateRepository.GetByIdAsync(id);
 
             if (certificate == null)
-                return Result.Failure<bool>(new Error(ErrorCode.NotFound, $"Тема с ID {id} не найдена."));
+                return Result.Failure<bool>(new Error(ErrorCode.NotFound, $"Справка с ID {id} не найдена."));
 
-            await _unitOfWork.Certificates.RemoveAsync(certificate);
-            await _unitOfWork.SaveChangesAsync();
+            await _certificateRepository.RemoveAsync(certificate);
+            await _certificateRepository.SaveChangesAsync();
 
             return true;
         }
