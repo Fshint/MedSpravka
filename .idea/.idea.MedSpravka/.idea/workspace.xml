@@ -12,23 +12,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/FileUploadRequest.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IFileStorageService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Services/MinioFileStorageService.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/FileController.cs" afterDir="false" />
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="Minio добавил.">
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/CreateCertifiacateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/CreateCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/DeleteCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/DeleteCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/UpdateCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/UpdateCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateByIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateByIdQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CertificateDTO.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/CertificateRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/CreateCertificateRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/CertificateController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/AssemblyReferense.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/AssemblyReferense.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommandHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/LoginUserCommandHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/AuthResponseDTO.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/AuthResponseDTO.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CreateCertificateDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IAuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IAuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Services/AuthService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/AuthService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/ServicesCollectionExtensions.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/ServicesCollectionExtensions.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/MedicalCertificate.Infrastructure.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Services/UserService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/UserService.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +85,7 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.MedicalCertificate.WebAPI: http.executor&quot;: &quot;Run&quot;,
+    &quot;.NET Launch Settings Profile.MedicalCertificate.WebAPI: http.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;master&quot;,
@@ -161,6 +164,9 @@
       <workItem from="1749663925023" duration="130000" />
       <workItem from="1749704821147" duration="497000" />
       <workItem from="1750008218765" duration="4686000" />
+      <workItem from="1750414307222" duration="581000" />
+      <workItem from="1750414920420" duration="7335000" />
+      <workItem from="1750594565217" duration="1189000" />
     </task>
     <task id="LOCAL-00001" summary="commit">
       <option name="closed" value="true" />
@@ -234,7 +240,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750242232412</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Minio добавил">
+      <option name="closed" value="true" />
+      <created>1750414472410</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1750414472410</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -271,6 +285,7 @@
     <MESSAGE value="typeshit" />
     <MESSAGE value="JWT исправил authservice" />
     <MESSAGE value="Добавил библиотеку minio" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добавил библиотеку minio" />
+    <MESSAGE value="Minio добавил" />
+    <option name="LAST_COMMIT_MESSAGE" value="Minio добавил" />
   </component>
 </project>

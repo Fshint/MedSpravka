@@ -6,7 +6,7 @@ using KDS.Primitives.FluentResult;
 
 namespace MedicalCertificate.Application.Services;
 
-    public class UserService : IUserService
+public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
         private readonly IRoleRepository _roleRepository;
