@@ -12,7 +12,7 @@ public class ApproveCertificateCommandHandler(
 {
     public async Task<Result> Handle(ApproveCertificateCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Подтверждение справки: {CertificateId}", request.CertificateId);
+        logger.LogInformation("Подтверждение справки");
 
         var result = await certificateService.ApproveAsync(request.CertificateId, request.ApprovedByUserId, cancellationToken);
 

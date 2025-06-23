@@ -16,6 +16,11 @@ namespace MedicalCertificate.Infrastructure.Services
         public DbSet<CertificateStatusHistory> CertificateStatusHistories { get; set; }
         public DbSet<CertificateStatus> CertificateStatuses { get; set; }
 
+
+        public async Task SaveChangesAsync()
+        {
+            
+        }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);

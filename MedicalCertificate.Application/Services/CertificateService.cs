@@ -143,7 +143,7 @@ public class CertificateService : ICertificateService
             await _certificateStatusHistoryRepository.AddAsync(new CertificateStatusHistory
             {
                 CertificateId = certificateId,
-                StatusId = 2,
+                StatusId = certificate.StatusId,
                 ChangedBy = approvedByUserId,
                 Comment = "Справка подверждена"
             });

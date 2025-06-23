@@ -18,7 +18,7 @@ public class GetCertificateHistoryByCertificateIdQueryHandler(
         if (histories == null || histories.Count == 0)
             return Result.Failure<List<CertificateStatusHistoryDto>>(new Error("History.NotFound", "История не найдена"));
 
-        var result = new List<CertificateStatusHistoryDto>();
+        var result = new List<CertificateStatusHistoryDto>(histories.Count);
 
         foreach (var h in histories.OrderBy(h => h.ChangedAt))
         {

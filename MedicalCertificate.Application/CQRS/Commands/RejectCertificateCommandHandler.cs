@@ -12,7 +12,7 @@ public class RejectCertificateCommandHandler(
 {
     public async Task<Result> Handle(RejectCertificateCommand request, CancellationToken cancellationToken)
     {
-        logger.LogInformation("Отклонение справки: {CertificateId}", request.CertificateId);
+        logger.LogInformation("Отклонение справки");
 
         var result = await certificateService.RejectAsync(
             request.CertificateId,

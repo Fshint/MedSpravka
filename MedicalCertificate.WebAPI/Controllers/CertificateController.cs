@@ -91,13 +91,20 @@ public class CertificateController(ILogger<CertificateController> logger) : Base
     [HttpPost("{id}/approve")]
     public async Task<IActionResult> Approve(int id, [FromBody] ApproveCertificateRequest request)
     {
-        var command = new ApproveCertificateCommand(id, request.ApprovedByUserId);
-        var result = await mediator.Send(command);
+        var scope = new Dictionary<string, int>()
+        {
+            { "CertificateId", request.ApprovedByUserId }
+        };
+        using (logger.BeginScope(scope))
+        {
+            var command = new ApproveCertificateCommand(id, request.ApprovedByUserId);
+            var result = await mediator.Send(command);
 
-        if (result.IsFailed)
-            return GenerateProblemResponse(result.Error);
+            if (result.IsFailed)
+                return GenerateProblemResponse(result.Error);
 
-        return Ok("Справка подтверждена");
+            return Ok("Справка подтверждена");
+        }
     }
 
     [HttpPost("{id}/reject")]

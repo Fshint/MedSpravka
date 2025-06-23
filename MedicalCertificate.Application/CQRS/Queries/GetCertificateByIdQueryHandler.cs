@@ -11,7 +11,6 @@ public class GetCertificateByIdQueryHandler(ICertificateService certificateServi
         var result = await certificateService.GetByIdAsync(request.Id);
 
         if(result.IsFailed)
-            if (result.IsFailed)
                 return Result.Failure<CertificateDto?>(result.Error);
         return result;
     }
