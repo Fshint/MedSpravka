@@ -1,15 +1,14 @@
 ﻿using MedicalCertificate.Application.CQRS.Commands;
 using MedicalCertificate.Application.CQRS.Queries;
-using MediatR;
+using MedicalCertificate.WebAPI.Contracts;
 using Microsoft.AspNetCore.Mvc;
-using System.ComponentModel;
+using Microsoft.Extensions.Logging;
 
 namespace MedicalCertificate.WebAPI.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-
-public class CertificateController(IMediator mediator) : BaseController
+public class CertificateController(ILogger<CertificateController> logger) : BaseController
 {
     [HttpGet]
     public async Task<IActionResult> Get()
@@ -18,7 +17,7 @@ public class CertificateController(IMediator mediator) : BaseController
         if (result.IsFailed)
             return GenerateProblemResponse(result.Error);
 
-        return Ok(result);
+        return Ok(result.Value);
     }
 
     [HttpGet("{id}")]
@@ -28,13 +27,36 @@ public class CertificateController(IMediator mediator) : BaseController
         if (result.IsFailed)
             return GenerateProblemResponse(result.Error);
 
-        return Ok(result);
+        return Ok(result.Value);
+    }
+
+    [HttpGet("{id}/history")]
+    public async Task<IActionResult> GetHistory(int id)
+    {
+        var result = await mediator.Send(new GetCertificateHistoryByCertificateIdQuery(id));
+        if (result.IsFailed)
+            return GenerateProblemResponse(result.Error);
+
+        return Ok(result.Value);
     }
 
     [HttpPost]
-    public async Task<IActionResult> Post([FromBody] CreateCertificateCommand command)
+    public async Task<IActionResult> Post([FromBody] CreateCertificateRequest request)
     {
+        var command = new CreateCertificateCommand
+        {
+            UserId = request.UserId,
+            StartDate = request.StartDate,
+            EndDate = request.EndDate,
+            Clinic = request.Clinic,
+            Comment = request.Comment,
+            FilePathId = request.FilePathId,
+            StatusId = request.StatusId,
+            ReviewerComment = request.ReviewerComment
+        };
+
         var result = await mediator.Send(command);
+
         if (result.IsFailed)
             return GenerateProblemResponse(result.Error);
 
@@ -42,15 +64,52 @@ public class CertificateController(IMediator mediator) : BaseController
     }
 
     [HttpPut("{id}")]
-    public async Task<IActionResult> Put(int id, [FromBody] UpdateCertificateCommand command)
+    public async Task<IActionResult> Put(int id, [FromBody] UpdateCertificateRequest request)
     {
-        var updatedCommand = command with { Id = id };
-        var result = await mediator.Send(updatedCommand);
+        var command = new UpdateCertificateCommand
+        {
+            Id = id,
+            UserId = request.UserId,
+            StartDate = request.StartDate,
+            EndDate = request.EndDate,
+            Clinic = request.Clinic,
+            Comment = request.Comment,
+            FilePathId = request.FilePathId,
+            StatusId = request.StatusId,
+            ReviewerComment = request.ReviewerComment,
+            CreatedAt = request.CreatedAt
+        };
+
+        var result = await mediator.Send(command);
 
         if (result.IsFailed)
             return GenerateProblemResponse(result.Error);
 
-        return Ok(result);
+        return Ok(result.Value);
+    }
+
+    [HttpPost("{id}/approve")]
+    public async Task<IActionResult> Approve(int id, [FromBody] ApproveCertificateRequest request)
+    {
+        var command = new ApproveCertificateCommand(id, request.ApprovedByUserId);
+        var result = await mediator.Send(command);
+
+        if (result.IsFailed)
+            return GenerateProblemResponse(result.Error);
+
+        return Ok("Справка подтверждена");
+    }
+
+    [HttpPost("{id}/reject")]
+    public async Task<IActionResult> Reject(int id, [FromBody] RejectCertificateRequest request)
+    {
+        var command = new RejectCertificateCommand(id, request.RejectedByUserId, request.Comment);
+        var result = await mediator.Send(command);
+
+        if (result.IsFailed)
+            return GenerateProblemResponse(result.Error);
+
+        return Ok("Справка отклонена");
     }
 
     [HttpDelete("{id}")]
@@ -60,7 +119,6 @@ public class CertificateController(IMediator mediator) : BaseController
         if (result.IsFailed)
             return GenerateProblemResponse(result.Error);
 
-        return Ok(result);
+        return Ok("Справка удалена");
     }
-
 }

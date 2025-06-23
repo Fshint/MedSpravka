@@ -1,6 +1,6 @@
-﻿namespace  MedicalCertificate.WebAPI.Contracts;
+namespace MedicalCertificate.WebAPI.Contracts;
 
-public record CreateCertificateRequest(
+public record UpdateCertificateRequest(
     int UserId,
     DateTime StartDate,
     DateTime EndDate,
@@ -10,4 +10,3 @@ public record CreateCertificateRequest(
     int StatusId,
     string ReviewerComment,
     DateTime CreatedAt);
-

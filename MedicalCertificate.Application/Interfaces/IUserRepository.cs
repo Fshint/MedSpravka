@@ -9,5 +9,6 @@ namespace MedicalCertificate.Application.Interfaces
         Task<User?> GetByIdWithRoleAsync(int id);
         Task<IEnumerable<User>> GetAllWithRolesAsync();
         Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
+        Task<User?> GetByIdAsync(int id);
     }
 }

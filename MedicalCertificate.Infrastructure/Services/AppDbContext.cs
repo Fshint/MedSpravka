@@ -13,6 +13,8 @@ namespace MedicalCertificate.Infrastructure.Services
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Certificate> Certificates { get; set; }
+        public DbSet<CertificateStatusHistory> CertificateStatusHistories { get; set; }
+        public DbSet<CertificateStatus> CertificateStatuses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -52,7 +54,6 @@ namespace MedicalCertificate.Infrastructure.Services
                 .HasForeignKey(h => h.StatusId)
                 .OnDelete(DeleteBehavior.Restrict);
             
-                
         }
     }
 }

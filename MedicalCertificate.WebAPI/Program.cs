@@ -27,6 +27,8 @@ builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ICertificateService, CertificateService>();
 builder.Services.AddScoped<ICertificateRepository, CertificateRepository>();
+builder.Services.AddScoped<ICertificateStatusHistoryRepository, CertificateStatusHistoryRepository>();
+builder.Services.AddScoped<ICertificateStatusRepository, CertificateStatusRepository>();
 builder.Services.AddScoped<DbContext, AppDbContext>();
 
 builder.Services.AddApplicationServices();

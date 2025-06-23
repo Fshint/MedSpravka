@@ -5,14 +5,19 @@ using MedicalCertificate.Domain.Entities;
 using KDS.Primitives.FluentResult;
 
 
-namespace MedicalCertificate.Application.Services
-{
-    public class CertificateService : ICertificateService
+namespace MedicalCertificate.Application.Services;
+
+public class CertificateService : ICertificateService
     {
         private readonly ICertificateRepository _certificateRepository;
-        public CertificateService(ICertificateRepository certificateRepository)
+        private readonly ICertificateStatusHistoryRepository _certificateStatusHistoryRepository;
+        public CertificateService(
+            ICertificateRepository certificateRepository,
+            ICertificateStatusHistoryRepository certificateStatusHistoryRepository
+            )
         {
             _certificateRepository = certificateRepository;
+            _certificateStatusHistoryRepository = certificateStatusHistoryRepository;
         }
 
         public async Task<Result<CertificateDto>> CreateAsync(CertificateDto dto, CancellationToken cancellationToken)
@@ -121,5 +126,56 @@ namespace MedicalCertificate.Application.Services
 
             return true;
         }
+        
+        public async Task<Result> ApproveAsync(int certificateId, int approvedByUserId, CancellationToken cancellationToken)
+        {
+            var certificate = await _certificateRepository.GetByIdAsync(certificateId);
+
+            if (certificate is null)
+                return Result.Failure(new Error(ErrorCode.NotFound, $"Справка с ID {certificateId} не найдена."));
+
+            if (certificate.StatusId is 2) 
+                return Result.Failure(new Error(ErrorCode.Validation, "Справка уже подтверждена."));
+
+            certificate.StatusId = 2; 
+            certificate.ReviewerComment = "Одобрено пользователем " + approvedByUserId;
+            
+            await _certificateStatusHistoryRepository.AddAsync(new CertificateStatusHistory
+            {
+                CertificateId = certificateId,
+                StatusId = 2,
+                ChangedBy = approvedByUserId,
+                Comment = "Справка подверждена"
+            });
+    
+            await _certificateRepository.SaveChangesAsync();
+
+            return Result.Success();
+        }
+        public async Task<Result> RejectAsync(int certificateId, int rejectedByUserId, string comment, CancellationToken cancellationToken)
+        {
+            var certificate = await _certificateRepository.GetByIdAsync(certificateId);
+
+            if (certificate is null)
+                return Result.Failure(new Error(ErrorCode.NotFound, $"Справка с ID {certificateId} не найдена."));
+
+            if (certificate.StatusId is 3) 
+                return Result.Failure(new Error(ErrorCode.Validation, "Справка уже отклонена."));
+
+            certificate.StatusId = 3; 
+            certificate.ReviewerComment = comment;
+            
+            await _certificateStatusHistoryRepository.AddAsync(new CertificateStatusHistory
+            {
+                CertificateId = certificate.Id,
+                StatusId = 3,
+                ChangedBy = rejectedByUserId,
+                ChangedAt = DateTime.UtcNow,
+                Comment = comment
+            });
+            
+            await _certificateRepository.SaveChangesAsync();
+
+            return Result.Success();
+        }
     }
-}

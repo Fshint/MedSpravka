@@ -15,4 +15,6 @@ public interface ICertificateService
     Task<Result<CertificateDto[]>> GetAllAsync(); 
     Task<Result<CertificateDto>> UpdateAsync(int id, CertificateDto dto); 
     Task<Result<bool>> DeleteAsync(int id); 
+    Task<Result> ApproveAsync(int certificateId, int approvedByUserId, CancellationToken cancellationToken);
+    Task<Result> RejectAsync(int certificateId, int rejectedByUserId, string comment, CancellationToken cancellationToken);
 }

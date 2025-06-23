@@ -59,5 +59,6 @@ namespace MedicalCertificate.Infrastructure.Repositories
         {
             return await _appDbContext.Users.FindAsync(id);
         }
+        
     }
 }

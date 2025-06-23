@@ -12,8 +12,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="">
+    <list default="true" id="c3e66128-048e-4f45-8a76-044de24e9fb7" name="Changes" comment="Minio добавил.">
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/ApproveCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/ApproveCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/RejectCertificateCommand.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Commands/RejectCertificateCommandHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateHistoryByCertificateIdQuery.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/CQRS/Queries/GetCertificateHistoryByCertificateIdQueryHandler.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/DTOs/CertificateStatusHistoryDto.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateStatusHistoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateStatusRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/CertificateStatusHistoryRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/CertificateStatusRepository.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/ApproveCertificateRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/RejectCertificateRequest.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/UpdateCertificateRequest.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.MedSpravka/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/ICertificateService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IUserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Interfaces/IUserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Application/Services/CertificateService.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Domain/Entities/CertificateStatus.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/UserRepository.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Repositories/UserRepository.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Services/AppDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.Infrastructure/Services/AppDbContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/CreateCertificateRequest.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Contracts/CreateCertificateRequest.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/CertificateController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/CertificateController.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,12 +68,15 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0d70d1787d4f455eaa4765e3c51e8750fd28/24/6b9d88b6/OptionsServiceCollectionExtensions.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5d2f1ce8cd1e42caa6d4bb93674cbdc92a00/fc/783ffc77/Result.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/8ca05ab75ecb4b79bbf7ebc4dc9be4e4219600/b4/0327f1ca/FromBodyAttribute.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/d9de85ef61604c57bb50b8cac968bd371a00/8d/cd036c50/IRequest`1.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/f9964b37fdf04e8e901a82f8809fc8844e00/3c/cde1edc2/OptionsConfigurationServiceCollectionExtensions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/3bd4df5aff92cabbc4d630be64227073db1b8539b3a1e47786b4b189d7cdb7/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Aisyn/RiderProjects/MedSpravka/MedicalCertificate.WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Aisyn/RiderProjects/MedSpravka/MedicalCertificate.WebAPI/Program.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/MedicalCertificate.WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://C:/Users/Aisyn/RiderProjects/MedSpravka/MedicalCertificate.WebAPI/appsettings.json" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="MetaFilesCheckinStateConfiguration" checkMetaFiles="false" />
   <component name="ProblemsViewState">
@@ -120,7 +145,7 @@
       <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
-      <browser name="37cae5b9-e8b2-4949-9172-aafa37fbc09c" />
+      <browser name="e5120d43-2c3f-47ef-9f26-65e539e05186" />
       <option name="GENERATE_APPLICATIONHOST_CONFIG" value="1" />
       <option name="SHOW_IIS_EXPRESS_OUTPUT" value="0" />
       <option name="SEND_DEBUG_REQUEST" value="1" />
