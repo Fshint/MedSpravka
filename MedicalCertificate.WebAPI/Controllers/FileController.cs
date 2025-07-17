@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MedicalCertificate.Application.Interfaces;
 using MedicalCertificate.Application.DTOs;
+using MedicalCertificate.Domain.Entities;
 
 namespace MedicalCertificate.WebAPI.Controllers;
 
@@ -9,22 +10,45 @@ namespace MedicalCertificate.WebAPI.Controllers;
 public class FileController : ControllerBase
 {
     private readonly IFileStorageService _fileStorage;
+    private readonly IFileRepository _fileRepository;
 
-    public FileController(IFileStorageService fileStorage)
+    public FileController(IFileStorageService fileStorage, IFileRepository fileRepository)
     {
         _fileStorage = fileStorage;
+        _fileRepository = fileRepository;
     }
 
     [HttpPost("upload")]
+    [RequestSizeLimit(10 * 1024 * 1024)]
     public async Task<IActionResult> Upload([FromForm] FileUploadRequest request)
     {
-        if (request.File is null || request.File.Length is 0)
+        if (request.File is null || request.File.Length == 0)
             return BadRequest("Файл не выбран");
 
-        using var stream = request.File.OpenReadStream();
-        await _fileStorage.UploadAsync(request.File.FileName, stream, request.File.ContentType);
+        const long maxFileSize = 10 * 1024 * 1024;
+        if (request.File.Length > maxFileSize)
+            return BadRequest("Файл слишком большой");
 
-        return Ok($"Файл {request.File.FileName} загружен");
+        var allowedTypes = new[] { "application/pdf", "image/png", "image/jpeg", "image/jpg" };
+        if (!allowedTypes.Contains(request.File.ContentType))
+            return BadRequest("Недопустимый тип файла");
+
+        var safeFileName = Path.GetFileName(request.File.FileName);
+        
+        using var memoryStream = new MemoryStream();
+        await request.File.CopyToAsync(memoryStream);
+        memoryStream.Position = 0;
+
+        await _fileStorage.UploadAsync(safeFileName, memoryStream, request.File.ContentType);
+        
+        await _fileRepository.CreateAsync(new StoredFile
+        {
+            Name = safeFileName,
+            FileType = request.File.ContentType,
+            IsDeleted = false
+        });
+
+        return Ok($"Файл {safeFileName} загружен");
     }
 
     [HttpGet("download/{fileName}")]
@@ -37,7 +61,14 @@ public class FileController : ControllerBase
     [HttpDelete("delete/{fileName}")]
     public async Task<IActionResult> Delete(string fileName)
     {
-        await _fileStorage.DeleteAsync(fileName);
-        return Ok($"Файл {fileName} удалён");
+        var file = await _fileRepository.GetByNameAsync(fileName);
+        if (file == null)
+            return NotFound("Файл не найден");
+
+        file.IsDeleted = true;
+        await _fileRepository.UpdateAsync(file);
+
+        return Ok($"Файл {fileName} помечен как удалён");
     }
+
 }

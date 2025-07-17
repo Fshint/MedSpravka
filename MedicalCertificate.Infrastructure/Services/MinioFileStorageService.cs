@@ -53,12 +53,8 @@ public class MinioFileStorageService : IFileStorageService
         return memoryStream;
     }
 
-    public async Task DeleteAsync(string objectName)
+    public Task MarkAsDeletedAsync(string objectName)
     {
-        var removeArgs = new RemoveObjectArgs()
-            .WithBucket(_bucketName)
-            .WithObject(objectName);
-
-        await _minioClient.RemoveObjectAsync(removeArgs);
+        return Task.CompletedTask;
     }
 }

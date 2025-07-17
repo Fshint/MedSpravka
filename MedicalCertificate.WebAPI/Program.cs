@@ -30,6 +30,7 @@ builder.Services.AddScoped<ICertificateRepository, CertificateRepository>();
 builder.Services.AddScoped<ICertificateStatusHistoryRepository, CertificateStatusHistoryRepository>();
 builder.Services.AddScoped<ICertificateStatusRepository, CertificateStatusRepository>();
 builder.Services.AddScoped<DbContext, AppDbContext>();
+builder.Services.AddScoped<IFileRepository, FileRepository>();
 
 builder.Services.AddApplicationServices();
 builder.Services.AddDomain(builder.Configuration);

@@ -15,6 +15,8 @@ namespace MedicalCertificate.Infrastructure.Services
         public DbSet<Certificate> Certificates { get; set; }
         public DbSet<CertificateStatusHistory> CertificateStatusHistories { get; set; }
         public DbSet<CertificateStatus> CertificateStatuses { get; set; }
+        public DbSet<StoredFile> StoredFiles { get; set; }
+
 
 
         public async Task SaveChangesAsync()
@@ -42,20 +44,14 @@ namespace MedicalCertificate.Infrastructure.Services
                 .OnDelete(DeleteBehavior.Restrict);
             
             modelBuilder.Entity<Certificate>()
-                .HasOne(c => c.FilePath)
-                .WithMany()
-                .HasForeignKey(c => c.FilePathId)
-                .OnDelete(DeleteBehavior.Restrict);
-            
-            modelBuilder.Entity<Certificate>()
                 .HasOne(c => c.Status)
                 .WithMany()
                 .HasForeignKey(c => c.StatusId)
                 .OnDelete(DeleteBehavior.Restrict);
             
             modelBuilder.Entity<Certificate>()
-                .HasOne(c => c.StatusHistories)
-                .WithMany()
+                .HasMany(c => c.StatusHistories)
+                .WithOne()
                 .HasForeignKey(h => h.StatusId)
                 .OnDelete(DeleteBehavior.Restrict);
             

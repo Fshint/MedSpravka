@@ -90,7 +90,6 @@ public class UserService : IUserService
                 await _userRepository.AddAsync(user);
 
                 userDto.Id = user.Id;
-                userDto.RoleName = (await _roleRepository.GetByIdAsync(user.RoleId, cancellationToken))?.Name ?? string.Empty;
 
 
                 return Result.Success(userDto);
@@ -111,12 +110,6 @@ public class UserService : IUserService
                 return Result.Failure<UserDto>(new Error(ErrorCode.Conflict, "Пользователь с таким именем уже существует."));
             }
 
-            var role = await _roleRepository.GetByIdAsync(userDto.RoleId, CancellationToken.None);
-
-            if (role is null)
-            {
-                return Result.Failure<UserDto>(new Error(ErrorCode.NotFound, $"Роль с ID {userDto.RoleId} не найдена."));
-            }
 
             user.UserName = userDto.UserName;
             user.RoleId = userDto.RoleId;

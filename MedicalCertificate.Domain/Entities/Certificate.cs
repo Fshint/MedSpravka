@@ -14,8 +14,7 @@ namespace MedicalCertificate.Domain.Entities
         public DateTime CreatedAt { get; set; }
 
         public User? User { get; set; }
-        public File? FilePath { get; set; }
         public CertificateStatus? Status { get; set; }
-        public ICollection<CertificateStatusHistory>? StatusHistories { get; set; }
+        public ICollection<CertificateStatusHistory>? StatusHistories { get; set; }= new List<CertificateStatusHistory>();
     }
 }
